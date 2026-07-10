@@ -1,0 +1,40 @@
+# netops-demo backend selection — copy to config.yaml and edit.
+# Everything is OPTIONAL: without this file the demo runs all-sim, offline.
+# CLI flags override these values. NEVER put secrets here: *_env fields name
+# the environment variable that holds the credential.
+
+twin: sim               # sim | eve
+telemetry: sim          # sim | nuar   (nuar applies to the `replay` lane)
+counterfactual: sim     # sim | batfish | eve
+engine: builtin         # builtin | nautilus (telemetry replay/live lane only)
+reasoner: rules         # rules | llm (llm needs ANTHROPIC_API_KEY)
+seed: 2026
+
+# inventory: demo/fixtures/inventory.json   # canonical id mapping (item A)
+
+eve:                    # EVE-NG REST API (fixture fallback when unreachable)
+  base_url: https://eve.lab.example.net
+  lab: netops/zone1.unl
+  username: admin
+  password_env: EVE_PASSWORD
+
+mcp:                    # junos-mcp-server, streamable-http (default port 30030)
+  url: http://127.0.0.1:30030/mcp
+
+nuar:                   # NUAR historical telemetry export (internal system)
+  export_path: demo/fixtures/nuar/nuar_export.json
+  # source_path: /mnt/nuar-exports/zone1-latest.json   # for `record --target nuar`
+  # api_url: https://nuar.internal.example/export/zone1
+
+batfish:                # Batfish service for the static counterfactual oracle
+  host: localhost
+  snapshot_dir: snapshots/base   # configs/ folder with device configs
+
+thresholds:             # detection tuning — RETUNE THESE ON REAL DATA
+  congestion_pct: 85
+  error_rate: 50
+  latency_ms: 30
+  drop_shift_pct: 15
+  change_point_score: 6
+  telemetry_window: 24
+  audit_every: 3

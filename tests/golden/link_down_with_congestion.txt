@@ -1,0 +1,29 @@
+[JUMEAU] 10:31:20 zone emulee prete: 8 routeurs, 4 prefixes clients, base de reference capturee.
+[SCENARIO] linkdown-core2-core4-01: Lien core2-core4 tombe; le trafic se reporte et sature core3-core4
+[PANNE] 10:31:35 injection de link_down.link.core2-core4 (validee: oui)
+[HEARTBEAT] 10:31:40 anomalie: lien core2-core4 tombe (evenement link_down) ; chute de trafic sur core1-core2 (-25 points) a 10:31:35 ; utilisation lien core1-core3 a 92% (seuil 85%), point de rupture a 10:31:35 ; chute de trafic sur core2-core4 (-36 points) a 10:31:35 ; utilisation lien core3-core4 a 100% (seuil 85%), point de rupture a 10:31:35. Incident INC-0001 cree.
+[RCA] plan: correler avec les changements de config recents, localiser sur la topologie, verifier le plan de controle, puis valider la cause par contrefactuel dans le bac a sable.
+[RCA] read_telemetry(core1-core2, 24) -> 23 echantillons sur core1:ge-0/0/0; dernier: util 10%, latence 3 ms, erreurs 2/intervalle
+[RCA] read_telemetry(core1-core3, 24) -> 23 echantillons sur core1:ge-0/0/1; dernier: util 92%, latence 3 ms, erreurs 0/intervalle
+[RCA] get_bgp_state() -> toutes les sessions BGP sont etablies et stables
+[RCA] get_isis_adjacencies() -> adjacences Down: core2-core4
+[RCA] get_link_traffic(core1-core3) -> 92% (920/1000 Mbps); flux: cust-A/24<->cust-D/24 620M, cust-A/24<->cust-C/24 200M, cust-B/24<->cust-D/24 100M
+[RCA] get_topology_neighbours(core1) -> voisins: core2, core3, edge1
+[RCA] get_affected_clients(all) -> clients impactes: cust-A/24 (broken: lien sature, pertes severes), cust-B/24 (broken: lien sature, pertes severes), cust-C/24 (broken: lien sature, pertes severes), cust-D/24 (broken: lien sature, pertes severes)
+[RCA] shortest_path(cust-A/24, cust-D/24, live) -> chemin (live): edge1 > core1 > core3 > core4 > edge4 (cout 40)
+[RCA] shortest_path(cust-A/24, cust-D/24, baseline) -> chemin (baseline): edge1 > core1 > core2 > core4 > edge4 (cout 40)
+[RCA] le lien congestionne core1-core3 est traite comme un EFFET (la congestion n'est pas un type de panne injectable); la cause doit etre en amont.
+[RCA] hypotheses classees: 1) lien core2-core4 tombe (evenement link_down a t=19) [score 90]
+[RCA] hypothese: lien core2-core4 tombe (evenement link_down a t=19). Validation contrefactuelle dans le jumeau (bac a sable)...
+[RCA] counterfactual_inject(core2-core4) -> en rejouant cette cause dans le bac a sable, les symptomes observes se REPRODUISENT. Cause racine confirmee.
+[RESULTAT] Cause racine: lien core2-core4 tombe (evenement link_down a t=19). Clients impactes: cust-A/24, cust-B/24, cust-C/24, cust-D/24. Confiance: elevee.
+[RESULTAT] Chaine de preuves:
+  1. symptomes (INC-0001): lien core2-core4 tombe (evenement link_down) ; chute de trafic sur core1-core2 (-25 points) a 10:31:35 ; utilisation lien core1-core3 a 92% (seuil 85%), point de rupture a 10:31:35 ; chute de trafic sur core2-core4 (-36 points) a 10:31:35 ; utilisation lien core3-core4 a 100% (seuil 85%), point de rupture a 10:31:35 — debut estime t=19
+  2. telemetrie core1-core2: rupture de la serie 'utilisation_pct' a t=20 (decalage -52)
+  3. telemetrie core1-core3: rupture de la serie 'utilisation_pct' a t=20 (decalage +72)
+  4. audit de configuration: aucun ecart au golden
+  5. plan de controle: adjacence IS-IS core2-core4 Down
+  6. le trafic cust-A/24->cust-D/24 s'est reporte: edge1 > core1 > core2 > core4 > edge4 devient edge1 > core1 > core3 > core4 > edge4
+  7. contrefactuel: la re-injection de cette cause dans le bac a sable reproduit exactement la signature des symptomes
+[EVALUATION] cause racine: PASS (correspondance exacte (type, object, where)) ; clients impactes: PASS (ensemble de clients exact)
+[RECUPERATION] 10:32:05 panne retiree (validee: oui), jumeau redevenu propre: oui.

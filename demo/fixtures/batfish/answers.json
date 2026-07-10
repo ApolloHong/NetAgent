@@ -1,0 +1,54 @@
+{
+ "config_drift.isis_metric.core1-core2": {
+  "changed_routes": [
+   {
+    "node": "edge1",
+    "prefix": "10.10.4.0/24",
+    "old_next_hop": "core1->core2",
+    "new_next_hop": "core1->core3"
+   },
+   {
+    "node": "edge4",
+    "prefix": "10.10.1.0/24",
+    "old_next_hop": "core4->core2",
+    "new_next_hop": "core4->core3"
+   }
+  ],
+  "down_links": [],
+  "unreachable_prefixes": []
+ },
+ "link_down.link.core2-core4": {
+  "changed_routes": [
+   {
+    "node": "edge1",
+    "prefix": "10.10.4.0/24",
+    "old_next_hop": "core1->core2",
+    "new_next_hop": "core1->core3"
+   },
+   {
+    "node": "edge2",
+    "prefix": "10.10.4.0/24",
+    "old_next_hop": "core2->core4",
+    "new_next_hop": "core2->core1"
+   }
+  ],
+  "down_links": [
+   "core2-core4"
+  ],
+  "unreachable_prefixes": []
+ },
+ "config_drift.export_policy.edge3": {
+  "changed_routes": [
+   {
+    "node": "edge1",
+    "prefix": "10.10.3.0/24",
+    "old_next_hop": "core1->core3",
+    "new_next_hop": null
+   }
+  ],
+  "down_links": [],
+  "unreachable_prefixes": [
+   "cust-C/24"
+  ]
+ }
+}

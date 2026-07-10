@@ -1,0 +1,13 @@
+# Core (required — the demo runs fully offline with just these)
+networkx>=3.0
+numpy>=1.24
+
+# Optional real-backend / feature extras — see pyproject.toml:
+#   pip install .[eve]       -> httpx (EVE-NG REST + junos-mcp-server transports)
+#   pip install .[batfish]   -> pybatfish (static counterfactual oracle)
+#   pip install .[gnmi]      -> pygnmi (live telemetry feed)
+#   pip install .[nautilus]  -> nautilus_trader (telemetry replay/live engine; LGPL)
+#   pip install .[llm]       -> anthropic (--reasoner llm, --llm-judge)
+#   pip install .[viz]       -> matplotlib (run --png)
+#   pip install .[yaml]      -> pyyaml (full-YAML config files)
+# Without any extra, every adapter falls back to fixtures under demo/fixtures/.

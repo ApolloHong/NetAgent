@@ -1,0 +1,70 @@
+{
+ "code": 200,
+ "status": "success",
+ "data": [
+  {
+   "network_id": 0,
+   "type": "ethernet",
+   "source": "node1",
+   "source_label": "ge-0/0/0",
+   "destination": "node2",
+   "destination_label": "ge-0/0/0"
+  },
+  {
+   "network_id": 0,
+   "type": "ethernet",
+   "source": "node1",
+   "source_label": "ge-0/0/1",
+   "destination": "node3",
+   "destination_label": "ge-0/0/0"
+  },
+  {
+   "network_id": 0,
+   "type": "ethernet",
+   "source": "node5",
+   "source_label": "ge-0/0/0",
+   "destination": "node1",
+   "destination_label": "ge-0/0/2"
+  },
+  {
+   "network_id": 0,
+   "type": "ethernet",
+   "source": "node2",
+   "source_label": "ge-0/0/1",
+   "destination": "node4",
+   "destination_label": "ge-0/0/0"
+  },
+  {
+   "network_id": 0,
+   "type": "ethernet",
+   "source": "node6",
+   "source_label": "ge-0/0/0",
+   "destination": "node2",
+   "destination_label": "ge-0/0/2"
+  },
+  {
+   "network_id": 0,
+   "type": "ethernet",
+   "source": "node3",
+   "source_label": "ge-0/0/1",
+   "destination": "node4",
+   "destination_label": "ge-0/0/1"
+  },
+  {
+   "network_id": 0,
+   "type": "ethernet",
+   "source": "node7",
+   "source_label": "ge-0/0/0",
+   "destination": "node3",
+   "destination_label": "ge-0/0/2"
+  },
+  {
+   "network_id": 0,
+   "type": "ethernet",
+   "source": "node8",
+   "source_label": "ge-0/0/0",
+   "destination": "node4",
+   "destination_label": "ge-0/0/2"
+  }
+ ]
+}

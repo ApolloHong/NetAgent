@@ -1,0 +1,1406 @@
+{
+ "core1": {
+  "get_junos_config": "set interfaces ge-0/0/0 mtu 9192\nset protocols isis interface ge-0/0/0.0 metric 1000\nset interfaces ge-0/0/1 mtu 9192\nset protocols isis interface ge-0/0/1.0 metric 10\nset interfaces ge-0/0/2 mtu 9192\nset protocols isis interface ge-0/0/2.0 metric 10\n",
+  "show isis adjacency | display json": {
+   "isis-adjacency-information": [
+    {
+     "isis-adjacency": [
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/0.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core2"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      },
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/1.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core3"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      },
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/2.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "edge1"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show bgp summary | display json": {
+   "bgp-information": [
+    {
+     "bgp-peer": []
+    }
+   ]
+  },
+  "show route | display json": {
+   "route-information": [
+    {
+     "route-table": [
+      {
+       "table-name": [
+        {
+         "data": "inet.0"
+        }
+       ],
+       "rt": [
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.1.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.2.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.3.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.4.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show system commit": "0   2026-07-08 10:31:35 UTC by netops via netconf\n1   2026-07-01 09:00:00 UTC by admin via cli\n"
+ },
+ "core2": {
+  "get_junos_config": "set interfaces ge-0/0/0 mtu 9192\nset protocols isis interface ge-0/0/0.0 metric 10\nset interfaces ge-0/0/1 mtu 9192\nset protocols isis interface ge-0/0/1.0 metric 10\nset interfaces ge-0/0/2 mtu 9192\nset protocols isis interface ge-0/0/2.0 metric 10\n",
+  "show isis adjacency | display json": {
+   "isis-adjacency-information": [
+    {
+     "isis-adjacency": [
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/0.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core1"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      },
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/1.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core4"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      },
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/2.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "edge2"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show bgp summary | display json": {
+   "bgp-information": [
+    {
+     "bgp-peer": []
+    }
+   ]
+  },
+  "show route | display json": {
+   "route-information": [
+    {
+     "route-table": [
+      {
+       "table-name": [
+        {
+         "data": "inet.0"
+        }
+       ],
+       "rt": [
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.1.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.2.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.3.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.4.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show system commit": "0   2026-07-01 09:00:00 UTC by admin via cli\n"
+ },
+ "core3": {
+  "get_junos_config": "set interfaces ge-0/0/0 mtu 9192\nset protocols isis interface ge-0/0/0.0 metric 10\nset interfaces ge-0/0/1 mtu 9192\nset protocols isis interface ge-0/0/1.0 metric 10\nset interfaces ge-0/0/2 mtu 9192\nset protocols isis interface ge-0/0/2.0 metric 10\n",
+  "show isis adjacency | display json": {
+   "isis-adjacency-information": [
+    {
+     "isis-adjacency": [
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/0.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core1"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      },
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/1.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core4"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      },
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/2.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "edge3"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show bgp summary | display json": {
+   "bgp-information": [
+    {
+     "bgp-peer": []
+    }
+   ]
+  },
+  "show route | display json": {
+   "route-information": [
+    {
+     "route-table": [
+      {
+       "table-name": [
+        {
+         "data": "inet.0"
+        }
+       ],
+       "rt": [
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.1.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.2.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.3.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.4.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show system commit": "0   2026-07-01 09:00:00 UTC by admin via cli\n"
+ },
+ "core4": {
+  "get_junos_config": "set interfaces ge-0/0/0 mtu 9192\nset protocols isis interface ge-0/0/0.0 metric 10\nset interfaces ge-0/0/1 mtu 9192\nset protocols isis interface ge-0/0/1.0 metric 10\nset interfaces ge-0/0/2 mtu 9192\nset protocols isis interface ge-0/0/2.0 metric 10\n",
+  "show isis adjacency | display json": {
+   "isis-adjacency-information": [
+    {
+     "isis-adjacency": [
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/0.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core2"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      },
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/1.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core3"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      },
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/2.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "edge4"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show bgp summary | display json": {
+   "bgp-information": [
+    {
+     "bgp-peer": []
+    }
+   ]
+  },
+  "show route | display json": {
+   "route-information": [
+    {
+     "route-table": [
+      {
+       "table-name": [
+        {
+         "data": "inet.0"
+        }
+       ],
+       "rt": [
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.1.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.2.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.3.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.4.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show system commit": "0   2026-07-01 09:00:00 UTC by admin via cli\n"
+ },
+ "edge1": {
+  "get_junos_config": "set interfaces ge-0/0/0 mtu 9192\nset protocols isis interface ge-0/0/0.0 metric 10\nset protocols bgp group CUSTOMERS neighbor ce-A export EXPORT-CUST\n",
+  "show isis adjacency | display json": {
+   "isis-adjacency-information": [
+    {
+     "isis-adjacency": [
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/0.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core1"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show bgp summary | display json": {
+   "bgp-information": [
+    {
+     "bgp-peer": [
+      {
+       "peer-address": [
+        {
+         "data": "10.0.0.2+179"
+        }
+       ],
+       "description": [
+        {
+         "data": "ce-A"
+        }
+       ],
+       "peer-state": [
+        {
+         "data": "Established"
+        }
+       ],
+       "flap-count": [
+        {
+         "data": "0"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show route | display json": {
+   "route-information": [
+    {
+     "route-table": [
+      {
+       "table-name": [
+        {
+         "data": "inet.0"
+        }
+       ],
+       "rt": [
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.1.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.2.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.3.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.4.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show system commit": "0   2026-07-01 09:00:00 UTC by admin via cli\n"
+ },
+ "edge2": {
+  "get_junos_config": "set interfaces ge-0/0/0 mtu 9192\nset protocols isis interface ge-0/0/0.0 metric 10\nset protocols bgp group CUSTOMERS neighbor ce-B export EXPORT-CUST\n",
+  "show isis adjacency | display json": {
+   "isis-adjacency-information": [
+    {
+     "isis-adjacency": [
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/0.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core2"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show bgp summary | display json": {
+   "bgp-information": [
+    {
+     "bgp-peer": [
+      {
+       "peer-address": [
+        {
+         "data": "10.0.0.2+179"
+        }
+       ],
+       "description": [
+        {
+         "data": "ce-B"
+        }
+       ],
+       "peer-state": [
+        {
+         "data": "Established"
+        }
+       ],
+       "flap-count": [
+        {
+         "data": "0"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show route | display json": {
+   "route-information": [
+    {
+     "route-table": [
+      {
+       "table-name": [
+        {
+         "data": "inet.0"
+        }
+       ],
+       "rt": [
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.1.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.2.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.3.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.4.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show system commit": "0   2026-07-01 09:00:00 UTC by admin via cli\n"
+ },
+ "edge3": {
+  "get_junos_config": "set interfaces ge-0/0/0 mtu 9192\nset protocols isis interface ge-0/0/0.0 metric 10\nset protocols bgp group CUSTOMERS neighbor ce-C export EXPORT-CUST\n",
+  "show isis adjacency | display json": {
+   "isis-adjacency-information": [
+    {
+     "isis-adjacency": [
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/0.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core3"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show bgp summary | display json": {
+   "bgp-information": [
+    {
+     "bgp-peer": [
+      {
+       "peer-address": [
+        {
+         "data": "10.0.0.2+179"
+        }
+       ],
+       "description": [
+        {
+         "data": "ce-C"
+        }
+       ],
+       "peer-state": [
+        {
+         "data": "Established"
+        }
+       ],
+       "flap-count": [
+        {
+         "data": "0"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show route | display json": {
+   "route-information": [
+    {
+     "route-table": [
+      {
+       "table-name": [
+        {
+         "data": "inet.0"
+        }
+       ],
+       "rt": [
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.1.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.2.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.3.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.4.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show system commit": "0   2026-07-01 09:00:00 UTC by admin via cli\n"
+ },
+ "edge4": {
+  "get_junos_config": "set interfaces ge-0/0/0 mtu 9192\nset protocols isis interface ge-0/0/0.0 metric 10\nset protocols bgp group CUSTOMERS neighbor ce-D export EXPORT-CUST\n",
+  "show isis adjacency | display json": {
+   "isis-adjacency-information": [
+    {
+     "isis-adjacency": [
+      {
+       "interface-name": [
+        {
+         "data": "ge-0/0/0.0"
+        }
+       ],
+       "system-name": [
+        {
+         "data": "core4"
+        }
+       ],
+       "adjacency-state": [
+        {
+         "data": "Up"
+        }
+       ],
+       "holdtime": [
+        {
+         "data": "23"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show bgp summary | display json": {
+   "bgp-information": [
+    {
+     "bgp-peer": [
+      {
+       "peer-address": [
+        {
+         "data": "10.0.0.2+179"
+        }
+       ],
+       "description": [
+        {
+         "data": "ce-D"
+        }
+       ],
+       "peer-state": [
+        {
+         "data": "Established"
+        }
+       ],
+       "flap-count": [
+        {
+         "data": "0"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show route | display json": {
+   "route-information": [
+    {
+     "route-table": [
+      {
+       "table-name": [
+        {
+         "data": "inet.0"
+        }
+       ],
+       "rt": [
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.1.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.2.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.3.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "rt-destination": [
+          {
+           "data": "10.10.4.0/24"
+          }
+         ],
+         "rt-entry": [
+          {
+           "active-tag": [
+            {
+             "data": "*"
+            }
+           ],
+           "protocol-name": [
+            {
+             "data": "BGP"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "show system commit": "0   2026-07-01 09:00:00 UTC by admin via cli\n"
+ }
+}

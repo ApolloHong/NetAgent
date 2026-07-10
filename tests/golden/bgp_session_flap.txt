@@ -1,0 +1,20 @@
+[JUMEAU] 10:31:20 zone emulee prete: 8 routeurs, 4 prefixes clients, base de reference capturee.
+[SCENARIO] flap-bgp-edge2-ceB-01: Session BGP edge2~ce-B instable; retraits de route repetes du prefixe cust-B/24
+[PANNE] 10:31:35 injection de session_flap.bgp_session.edge2~ce-B (validee: oui)
+[HEARTBEAT] 10:31:40 anomalie: session BGP edge2~ce-B tombee. Incident INC-0001 cree.
+[HEARTBEAT] 10:31:55 symptome supplementaire rattache a INC-0001: session BGP edge2~ce-B instable (flapping)
+[RCA] plan: correler avec les changements de config recents, localiser sur la topologie, verifier le plan de controle, puis valider la cause par contrefactuel dans le bac a sable.
+[RCA] get_bgp_state() -> edge2~ce-B Down (3 transitions recentes, prefixe cust-B/24)
+[RCA] get_isis_adjacencies() -> toutes les adjacences IS-IS sont Up
+[RCA] get_affected_clients(all) -> clients impactes: cust-B/24 (broken: prefixe retire (BGP): cust-B/24), cust-D/24 (broken: prefixe retire (BGP): cust-B/24)
+[RCA] hypotheses classees: 1) session BGP edge2~ce-B instable (flapping), prefixe cust-B/24 retire [score 85]
+[RCA] hypothese: session BGP edge2~ce-B instable (flapping), prefixe cust-B/24 retire. Validation contrefactuelle dans le jumeau (bac a sable)...
+[RCA] counterfactual_inject(edge2~ce-B) -> en rejouant cette cause dans le bac a sable, les symptomes observes se REPRODUISENT. Cause racine confirmee.
+[RESULTAT] Cause racine: session BGP edge2~ce-B instable (flapping), prefixe cust-B/24 retire. Clients impactes: cust-B/24, cust-D/24. Confiance: elevee.
+[RESULTAT] Chaine de preuves:
+  1. symptomes (INC-0001): session BGP edge2~ce-B tombee ; session BGP edge2~ce-B instable (flapping) — debut estime t=19
+  2. audit de configuration: aucun ecart au golden
+  3. plan de controle: session edge2~ce-B Down, 3 transitions recentes
+  4. contrefactuel: la re-injection de cette cause dans le bac a sable reproduit exactement la signature des symptomes
+[EVALUATION] cause racine: PASS (correspondance exacte (type, object, where)) ; clients impactes: PASS (ensemble de clients exact)
+[RECUPERATION] 10:32:05 panne retiree (validee: oui), jumeau redevenu propre: oui.

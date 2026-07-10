@@ -1,0 +1,2019 @@
+{
+ "source": "NUAR export (captured fixture)",
+ "granularity_seconds": 300,
+ "interfaces": [
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "speed_mbps": 1000.0
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "speed_mbps": 1000.0
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "speed_mbps": 1000.0
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "speed_mbps": 1000.0
+  }
+ ],
+ "samples": [
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:00:00Z",
+   "in_octets": 23821951586,
+   "out_octets": 19334000300,
+   "in_errors": 101
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:05:00Z",
+   "in_octets": 37722480372,
+   "out_octets": 30732433904,
+   "in_errors": 103
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:10:00Z",
+   "in_octets": 51332915266,
+   "out_octets": 41892990517,
+   "in_errors": 104
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:15:00Z",
+   "in_octets": 64774339114,
+   "out_octets": 52914958073,
+   "in_errors": 104
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:20:00Z",
+   "in_octets": 78024517424,
+   "out_octets": 63780104287,
+   "in_errors": 105
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:25:00Z",
+   "in_octets": 91326683790,
+   "out_octets": 74687880707,
+   "in_errors": 105
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:30:00Z",
+   "in_octets": 105431466233,
+   "out_octets": 86253802310,
+   "in_errors": 107
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:35:00Z",
+   "in_octets": 119539662267,
+   "out_octets": 97822523057,
+   "in_errors": 108
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:40:00Z",
+   "in_octets": 133940828142,
+   "out_octets": 109631479075,
+   "in_errors": 110
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:45:00Z",
+   "in_octets": 147692422965,
+   "out_octets": 120907786830,
+   "in_errors": 112
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:50:00Z",
+   "in_octets": 161178633260,
+   "out_octets": 131966479272,
+   "in_errors": 114
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T06:55:00Z",
+   "in_octets": 175100921609,
+   "out_octets": 143382755718,
+   "in_errors": 116
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:00:00Z",
+   "in_octets": 189758394557,
+   "out_octets": 155401883535,
+   "in_errors": 118
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:05:00Z",
+   "in_octets": 203853263289,
+   "out_octets": 166959675895,
+   "in_errors": 119
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:10:00Z",
+   "in_octets": 218161954227,
+   "out_octets": 178692802464,
+   "in_errors": 121
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:15:00Z",
+   "in_octets": 232107887474,
+   "out_octets": 190128467726,
+   "in_errors": 121
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:20:00Z",
+   "in_octets": 246976382836,
+   "out_octets": 202320633923,
+   "in_errors": 123
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:25:00Z",
+   "in_octets": 262291061463,
+   "out_octets": 214878670397,
+   "in_errors": 123
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:30:00Z",
+   "in_octets": 277746903688,
+   "out_octets": 227552461021,
+   "in_errors": 123
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:35:00Z",
+   "in_octets": 292735127060,
+   "out_octets": 239842804186,
+   "in_errors": 123
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:40:00Z",
+   "in_octets": 14897471721,
+   "out_octets": 12215826811,
+   "in_errors": 124
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:45:00Z",
+   "in_octets": 29695628791,
+   "out_octets": 24350315608,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:50:00Z",
+   "in_octets": 45437733641,
+   "out_octets": 37258841585,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T07:55:00Z",
+   "in_octets": 61428318518,
+   "out_octets": 50371121184,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:00:00Z",
+   "in_octets": 77617619570,
+   "out_octets": 63646348047,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:05:00Z",
+   "in_octets": 92817317723,
+   "out_octets": 76110100532,
+   "in_errors": 127
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:10:00Z",
+   "in_octets": 108559324608,
+   "out_octets": 89018546177,
+   "in_errors": 128
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:15:00Z",
+   "in_octets": 125174055980,
+   "out_octets": 102642625902,
+   "in_errors": 129
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:20:00Z",
+   "in_octets": 141402666750,
+   "out_octets": 115950086734,
+   "in_errors": 130
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:25:00Z",
+   "in_octets": 157164781482,
+   "out_octets": 128875020814,
+   "in_errors": 130
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:30:00Z",
+   "in_octets": 174103649296,
+   "out_octets": 142764892421,
+   "in_errors": 132
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:35:00Z",
+   "in_octets": 191034280041,
+   "out_octets": 156648009631,
+   "in_errors": 132
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:40:00Z",
+   "in_octets": 207425606633,
+   "out_octets": 170088897436,
+   "in_errors": 133
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:45:00Z",
+   "in_octets": 224569492628,
+   "out_octets": 184146883952,
+   "in_errors": 133
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:50:00Z",
+   "in_octets": 241442241717,
+   "out_octets": 197982538205,
+   "in_errors": 135
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T08:55:00Z",
+   "in_octets": 258054550742,
+   "out_octets": 211604631605,
+   "in_errors": 135
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:00:00Z",
+   "in_octets": 275431438933,
+   "out_octets": 225853679922,
+   "in_errors": 137
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:05:00Z",
+   "in_octets": 292941085686,
+   "out_octets": 240211590260,
+   "in_errors": 138
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:10:00Z",
+   "in_octets": 309547764684,
+   "out_octets": 253829067038,
+   "in_errors": 140
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:15:00Z",
+   "in_octets": 326167081643,
+   "out_octets": 267456906944,
+   "in_errors": 141
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:20:00Z",
+   "in_octets": 343630439363,
+   "out_octets": 281776860275,
+   "in_errors": 141
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:25:00Z",
+   "in_octets": 360356876504,
+   "out_octets": 295492538731,
+   "in_errors": 142
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:30:00Z",
+   "in_octets": 378064190798,
+   "out_octets": 310012536452,
+   "in_errors": 142
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:35:00Z",
+   "in_octets": 395984659927,
+   "out_octets": 324707321138,
+   "in_errors": 143
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:40:00Z",
+   "in_octets": 414165707545,
+   "out_octets": 339615780185,
+   "in_errors": 145
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:45:00Z",
+   "in_octets": 431901050111,
+   "out_octets": 354158761089,
+   "in_errors": 146
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:50:00Z",
+   "in_octets": 450445295442,
+   "out_octets": 369365042260,
+   "in_errors": 146
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T09:55:00Z",
+   "in_octets": 469152800893,
+   "out_octets": 384705196729,
+   "in_errors": 148
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:00:00Z",
+   "in_octets": 487459524652,
+   "out_octets": 399716710211,
+   "in_errors": 148
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:05:00Z",
+   "in_octets": 505007676576,
+   "out_octets": 414106194788,
+   "in_errors": 148
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:10:00Z",
+   "in_octets": 523441448627,
+   "out_octets": 429221887870,
+   "in_errors": 149
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:15:00Z",
+   "in_octets": 541241788956,
+   "out_octets": 443818166940,
+   "in_errors": 151
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:20:00Z",
+   "in_octets": 559655663104,
+   "out_octets": 458917543741,
+   "in_errors": 152
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:25:00Z",
+   "in_octets": 577922889260,
+   "out_octets": 473896669189,
+   "in_errors": 153
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:30:00Z",
+   "in_octets": 596145806209,
+   "out_octets": 488839461087,
+   "in_errors": 153
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:35:00Z",
+   "in_octets": 615312252945,
+   "out_octets": 504555947410,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:40:00Z",
+   "in_octets": 633933599855,
+   "out_octets": 519825451876,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:45:00Z",
+   "in_octets": 653141100685,
+   "out_octets": 535575602557,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:50:00Z",
+   "in_octets": 672552677505,
+   "out_octets": 551493095549,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T10:55:00Z",
+   "in_octets": 692381114294,
+   "out_octets": 567752413716,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:00:00Z",
+   "in_octets": 711280302298,
+   "out_octets": 583249747879,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:05:00Z",
+   "in_octets": 730995621043,
+   "out_octets": 599416309250,
+   "in_errors": 156
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:10:00Z",
+   "in_octets": 750020420575,
+   "out_octets": 615016644866,
+   "in_errors": 158
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:15:00Z",
+   "in_octets": 768964467881,
+   "out_octets": 630550763656,
+   "in_errors": 158
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:20:00Z",
+   "in_octets": 789083857675,
+   "out_octets": 647048663287,
+   "in_errors": 159
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:25:00Z",
+   "in_octets": 809490799527,
+   "out_octets": 663782355605,
+   "in_errors": 160
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:30:00Z",
+   "in_octets": 829012952780,
+   "out_octets": 679790521272,
+   "in_errors": 161
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:35:00Z",
+   "in_octets": 848624052804,
+   "out_octets": 695871623291,
+   "in_errors": 161
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:40:00Z",
+   "in_octets": 868203714943,
+   "out_octets": 711926946245,
+   "in_errors": 163
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:45:00Z",
+   "in_octets": 888973931561,
+   "out_octets": 728958523871,
+   "in_errors": 163
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:50:00Z",
+   "in_octets": 909457893246,
+   "out_octets": 745755372452,
+   "in_errors": 163
+  },
+  {
+   "nuar_id": "NUAR:IF:100001",
+   "ts": "2026-06-01T11:55:00Z",
+   "in_octets": 929473019726,
+   "out_octets": 762167776165,
+   "in_errors": 165
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:00:00Z",
+   "in_octets": 23628667909,
+   "out_octets": 19175507686,
+   "in_errors": 100
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:05:00Z",
+   "in_octets": 36203720556,
+   "out_octets": 29487050856,
+   "in_errors": 101
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:10:00Z",
+   "in_octets": 50063620921,
+   "out_octets": 40852169155,
+   "in_errors": 103
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:15:00Z",
+   "in_octets": 62883930568,
+   "out_octets": 51364823065,
+   "in_errors": 104
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:20:00Z",
+   "in_octets": 76718539473,
+   "out_octets": 62709202367,
+   "in_errors": 105
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:25:00Z",
+   "in_octets": 90699562534,
+   "out_octets": 74173641277,
+   "in_errors": 107
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:30:00Z",
+   "in_octets": 104083371529,
+   "out_octets": 85148364653,
+   "in_errors": 108
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:35:00Z",
+   "in_octets": 117869648693,
+   "out_octets": 96453111927,
+   "in_errors": 108
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:40:00Z",
+   "in_octets": 132179517733,
+   "out_octets": 108187204539,
+   "in_errors": 109
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:45:00Z",
+   "in_octets": 146422544184,
+   "out_octets": 119866486229,
+   "in_errors": 111
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:50:00Z",
+   "in_octets": 160662860886,
+   "out_octets": 131543545925,
+   "in_errors": 113
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T06:55:00Z",
+   "in_octets": 174786330108,
+   "out_octets": 143124790687,
+   "in_errors": 115
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:00:00Z",
+   "in_octets": 189534549616,
+   "out_octets": 155218330684,
+   "in_errors": 116
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:05:00Z",
+   "in_octets": 204020630636,
+   "out_octets": 167096917120,
+   "in_errors": 117
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:10:00Z",
+   "in_octets": 217927375750,
+   "out_octets": 178500448113,
+   "in_errors": 118
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:15:00Z",
+   "in_octets": 232896713741,
+   "out_octets": 190775305266,
+   "in_errors": 119
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:20:00Z",
+   "in_octets": 247622020753,
+   "out_octets": 202850057016,
+   "in_errors": 120
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:25:00Z",
+   "in_octets": 262466431989,
+   "out_octets": 215022474229,
+   "in_errors": 120
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:30:00Z",
+   "in_octets": 277288309341,
+   "out_octets": 227176413657,
+   "in_errors": 121
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:35:00Z",
+   "in_octets": 292162813384,
+   "out_octets": 239373506972,
+   "in_errors": 121
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:40:00Z",
+   "in_octets": 307977398764,
+   "out_octets": 252341466983,
+   "in_errors": 121
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:45:00Z",
+   "in_octets": 323005256907,
+   "out_octets": 264664310660,
+   "in_errors": 121
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:50:00Z",
+   "in_octets": 338002951825,
+   "out_octets": 276962420493,
+   "in_errors": 122
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T07:55:00Z",
+   "in_octets": 353568579458,
+   "out_octets": 289726235152,
+   "in_errors": 122
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:00:00Z",
+   "in_octets": 368792670099,
+   "out_octets": 302209989478,
+   "in_errors": 122
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:05:00Z",
+   "in_octets": 384103410108,
+   "out_octets": 314764796286,
+   "in_errors": 123
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:10:00Z",
+   "in_octets": 400538368821,
+   "out_octets": 328241462431,
+   "in_errors": 124
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:15:00Z",
+   "in_octets": 416539147031,
+   "out_octets": 341362100563,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:20:00Z",
+   "in_octets": 432790162993,
+   "out_octets": 354687933652,
+   "in_errors": 126
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:25:00Z",
+   "in_octets": 449421337988,
+   "out_octets": 368325497148,
+   "in_errors": 127
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:45:00Z",
+   "in_octets": 465457850908,
+   "out_octets": 381475437742,
+   "in_errors": 127
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:50:00Z",
+   "in_octets": 482354335740,
+   "out_octets": 395330555304,
+   "in_errors": 128
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T08:55:00Z",
+   "in_octets": 499050915005,
+   "out_octets": 409021750301,
+   "in_errors": 130
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:00:00Z",
+   "in_octets": 515307263243,
+   "out_octets": 422351955856,
+   "in_errors": 131
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:05:00Z",
+   "in_octets": 533003012362,
+   "out_octets": 436862470134,
+   "in_errors": 131
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:10:00Z",
+   "in_octets": 549622301126,
+   "out_octets": 450490286921,
+   "in_errors": 131
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:15:00Z",
+   "in_octets": 567397887663,
+   "out_octets": 465066267881,
+   "in_errors": 131
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:20:00Z",
+   "in_octets": 584094280695,
+   "out_octets": 478757310167,
+   "in_errors": 133
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:25:00Z",
+   "in_octets": 600835751070,
+   "out_octets": 492485315874,
+   "in_errors": 133
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:30:00Z",
+   "in_octets": 618471389469,
+   "out_octets": 506946539361,
+   "in_errors": 133
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:35:00Z",
+   "in_octets": 635648439501,
+   "out_octets": 521031720387,
+   "in_errors": 135
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:40:00Z",
+   "in_octets": 653748369555,
+   "out_octets": 535873663031,
+   "in_errors": 137
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:45:00Z",
+   "in_octets": 671217287220,
+   "out_octets": 550198175516,
+   "in_errors": 138
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:50:00Z",
+   "in_octets": 688637757924,
+   "out_octets": 564482961493,
+   "in_errors": 138
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T09:55:00Z",
+   "in_octets": 706891534659,
+   "out_octets": 579451058415,
+   "in_errors": 138
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:00:00Z",
+   "in_octets": 725089959390,
+   "out_octets": 594373766694,
+   "in_errors": 139
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:05:00Z",
+   "in_octets": 743364746098,
+   "out_octets": 609359091795,
+   "in_errors": 139
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:10:00Z",
+   "in_octets": 761219383875,
+   "out_octets": 623999894772,
+   "in_errors": 140
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:15:00Z",
+   "in_octets": 779988701963,
+   "out_octets": 639390735604,
+   "in_errors": 141
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:20:00Z",
+   "in_octets": 798918807879,
+   "out_octets": 654913422455,
+   "in_errors": 142
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:25:00Z",
+   "in_octets": 816911483758,
+   "out_octets": 669667416676,
+   "in_errors": 142
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:30:00Z",
+   "in_octets": 835073647533,
+   "out_octets": 684560390972,
+   "in_errors": 142
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:35:00Z",
+   "in_octets": 853740989789,
+   "out_octets": 699867611622,
+   "in_errors": 142
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:40:00Z",
+   "in_octets": 872909813976,
+   "out_octets": 715586047455,
+   "in_errors": 144
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:45:00Z",
+   "in_octets": 892433063936,
+   "out_octets": 731595112422,
+   "in_errors": 144
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:50:00Z",
+   "in_octets": 911384551326,
+   "out_octets": 747135332082,
+   "in_errors": 145
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T10:55:00Z",
+   "in_octets": 931130382141,
+   "out_octets": 763326913350,
+   "in_errors": 146
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:00:00Z",
+   "in_octets": 950949786131,
+   "out_octets": 779578824622,
+   "in_errors": 146
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:05:00Z",
+   "in_octets": 971062870066,
+   "out_octets": 796071553448,
+   "in_errors": 147
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:10:00Z",
+   "in_octets": 991329871767,
+   "out_octets": 812690494843,
+   "in_errors": 149
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:15:00Z",
+   "in_octets": 1011009027032,
+   "out_octets": 828827402161,
+   "in_errors": 149
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:20:00Z",
+   "in_octets": 1030836673459,
+   "out_octets": 845086072231,
+   "in_errors": 150
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:25:00Z",
+   "in_octets": 1050955505430,
+   "out_octets": 861583514447,
+   "in_errors": 151
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:30:00Z",
+   "in_octets": 1071019671279,
+   "out_octets": 878036130443,
+   "in_errors": 152
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:35:00Z",
+   "in_octets": 1090557197646,
+   "out_octets": 894056902064,
+   "in_errors": 152
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:40:00Z",
+   "in_octets": 1110947408684,
+   "out_octets": 910776875115,
+   "in_errors": 152
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:45:00Z",
+   "in_octets": 1130830206854,
+   "out_octets": 927080769614,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:50:00Z",
+   "in_octets": 1151798653540,
+   "out_octets": 944274895896,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100002",
+   "ts": "2026-06-01T11:55:00Z",
+   "in_octets": 1172582053758,
+   "out_octets": 961317284075,
+   "in_errors": 156
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:00:00Z",
+   "in_octets": 20988489939,
+   "out_octets": 17010561750,
+   "in_errors": 100
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:05:00Z",
+   "in_octets": 31789291464,
+   "out_octets": 25867219000,
+   "in_errors": 100
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:10:00Z",
+   "in_octets": 42868927262,
+   "out_octets": 34952520354,
+   "in_errors": 101
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:15:00Z",
+   "in_octets": 53990938474,
+   "out_octets": 44072569548,
+   "in_errors": 101
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:20:00Z",
+   "in_octets": 65444728703,
+   "out_octets": 53464677535,
+   "in_errors": 101
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:25:00Z",
+   "in_octets": 76806498378,
+   "out_octets": 62781328669,
+   "in_errors": 102
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:30:00Z",
+   "in_octets": 87936211376,
+   "out_octets": 71907693327,
+   "in_errors": 102
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:35:00Z",
+   "in_octets": 99127529463,
+   "out_octets": 81084574158,
+   "in_errors": 102
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:40:00Z",
+   "in_octets": 110646285566,
+   "out_octets": 90529954162,
+   "in_errors": 104
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:45:00Z",
+   "in_octets": 121451971723,
+   "out_octets": 99390616810,
+   "in_errors": 105
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:50:00Z",
+   "in_octets": 133032289627,
+   "out_octets": 108886477491,
+   "in_errors": 106
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T06:55:00Z",
+   "in_octets": 144489331222,
+   "out_octets": 118281251599,
+   "in_errors": 108
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:00:00Z",
+   "in_octets": 155641171364,
+   "out_octets": 127425760515,
+   "in_errors": 108
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:05:00Z",
+   "in_octets": 166335144076,
+   "out_octets": 136194818138,
+   "in_errors": 110
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:10:00Z",
+   "in_octets": 177308820011,
+   "out_octets": 145193232405,
+   "in_errors": 111
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:15:00Z",
+   "in_octets": 188244692744,
+   "out_octets": 154160648046,
+   "in_errors": 113
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:20:00Z",
+   "in_octets": 199812983779,
+   "out_octets": 163646646695,
+   "in_errors": 114
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:25:00Z",
+   "in_octets": 210574277865,
+   "out_octets": 172470907846,
+   "in_errors": 116
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:30:00Z",
+   "in_octets": 222297107320,
+   "out_octets": 182083627999,
+   "in_errors": 117
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:35:00Z",
+   "in_octets": 233609927476,
+   "out_octets": 191360140527,
+   "in_errors": 117
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:40:00Z",
+   "in_octets": 244474043210,
+   "out_octets": 200268715429,
+   "in_errors": 119
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:45:00Z",
+   "in_octets": 255375299678,
+   "out_octets": 209207745732,
+   "in_errors": 120
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:50:00Z",
+   "in_octets": 266572462674,
+   "out_octets": 218389419388,
+   "in_errors": 122
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T07:55:00Z",
+   "in_octets": 277299357963,
+   "out_octets": 227185473525,
+   "in_errors": 122
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:00:00Z",
+   "in_octets": 288359888464,
+   "out_octets": 236255108536,
+   "in_errors": 124
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:05:00Z",
+   "in_octets": 299962879281,
+   "out_octets": 245769561006,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:10:00Z",
+   "in_octets": 311540226175,
+   "out_octets": 255262985459,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:15:00Z",
+   "in_octets": 323279559589,
+   "out_octets": 264889238859,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:20:00Z",
+   "in_octets": 333995133241,
+   "out_octets": 273676009254,
+   "in_errors": 126
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:25:00Z",
+   "in_octets": 345566901936,
+   "out_octets": 283164859584,
+   "in_errors": 126
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:30:00Z",
+   "in_octets": 356538293578,
+   "out_octets": 292161400731,
+   "in_errors": 126
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:35:00Z",
+   "in_octets": 367780582228,
+   "out_octets": 301380077424,
+   "in_errors": 126
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:40:00Z",
+   "in_octets": 378871516972,
+   "out_octets": 310474643914,
+   "in_errors": 128
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:45:00Z",
+   "in_octets": 390129976235,
+   "out_octets": 319706580510,
+   "in_errors": 130
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:50:00Z",
+   "in_octets": 401922073124,
+   "out_octets": 329376099959,
+   "in_errors": 130
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T08:55:00Z",
+   "in_octets": 413155498190,
+   "out_octets": 338587508513,
+   "in_errors": 131
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:00:00Z",
+   "in_octets": 424803595292,
+   "out_octets": 348138948137,
+   "in_errors": 132
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:05:00Z",
+   "in_octets": 435793186572,
+   "out_octets": 357150412987,
+   "in_errors": 134
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:10:00Z",
+   "in_octets": 446751155389,
+   "out_octets": 366135947417,
+   "in_errors": 136
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:15:00Z",
+   "in_octets": 457498988752,
+   "out_octets": 374949170775,
+   "in_errors": 136
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:20:00Z",
+   "in_octets": 468515593552,
+   "out_octets": 383982786711,
+   "in_errors": 137
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:25:00Z",
+   "in_octets": 480257515628,
+   "out_octets": 393611162814,
+   "in_errors": 137
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:30:00Z",
+   "in_octets": 491600911832,
+   "out_octets": 402912747701,
+   "in_errors": 138
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:35:00Z",
+   "in_octets": 502474113212,
+   "out_octets": 411828772832,
+   "in_errors": 139
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:40:00Z",
+   "in_octets": 513577476412,
+   "out_octets": 420933530656,
+   "in_errors": 139
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:45:00Z",
+   "in_octets": 524462444303,
+   "out_octets": 429859204327,
+   "in_errors": 140
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:50:00Z",
+   "in_octets": 535773684489,
+   "out_octets": 439134421279,
+   "in_errors": 142
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T09:55:00Z",
+   "in_octets": 547558909398,
+   "out_octets": 448798305704,
+   "in_errors": 143
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:00:00Z",
+   "in_octets": 582504422033,
+   "out_octets": 477453626065,
+   "in_errors": 144
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:05:00Z",
+   "in_octets": 616833976515,
+   "out_octets": 505603860740,
+   "in_errors": 144
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:10:00Z",
+   "in_octets": 651600121992,
+   "out_octets": 534112100031,
+   "in_errors": 146
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:15:00Z",
+   "in_octets": 685964281784,
+   "out_octets": 562290711060,
+   "in_errors": 147
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:20:00Z",
+   "in_octets": 720531026375,
+   "out_octets": 590635441624,
+   "in_errors": 149
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:25:00Z",
+   "in_octets": 755485878276,
+   "out_octets": 619298420183,
+   "in_errors": 151
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:30:00Z",
+   "in_octets": 790429879539,
+   "out_octets": 647952501218,
+   "in_errors": 152
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:35:00Z",
+   "in_octets": 825001091084,
+   "out_octets": 676300894684,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:40:00Z",
+   "in_octets": 859533898131,
+   "out_octets": 704617796463,
+   "in_errors": 156
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:45:00Z",
+   "in_octets": 893618286370,
+   "out_octets": 732566994819,
+   "in_errors": 156
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:50:00Z",
+   "in_octets": 928310429958,
+   "out_octets": 761014552561,
+   "in_errors": 158
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T10:55:00Z",
+   "in_octets": 962411377239,
+   "out_octets": 788977329331,
+   "in_errors": 159
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:00:00Z",
+   "in_octets": 996815526860,
+   "out_octets": 817188732020,
+   "in_errors": 161
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:05:00Z",
+   "in_octets": 1031703013447,
+   "out_octets": 845796471021,
+   "in_errors": 162
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:10:00Z",
+   "in_octets": 1066216914966,
+   "out_octets": 874097870267,
+   "in_errors": 163
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:15:00Z",
+   "in_octets": 1100509063940,
+   "out_octets": 902217432426,
+   "in_errors": 164
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:20:00Z",
+   "in_octets": 1134464612475,
+   "out_octets": 930060982225,
+   "in_errors": 165
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:25:00Z",
+   "in_octets": 1169028629018,
+   "out_octets": 958403475790,
+   "in_errors": 165
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:30:00Z",
+   "in_octets": 1203653710281,
+   "out_octets": 986796042426,
+   "in_errors": 166
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:35:00Z",
+   "in_octets": 1238620758298,
+   "out_octets": 1015469021800,
+   "in_errors": 166
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:40:00Z",
+   "in_octets": 1273420293888,
+   "out_octets": 1044004640983,
+   "in_errors": 167
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:45:00Z",
+   "in_octets": 1307493247909,
+   "out_octets": 1071944463280,
+   "in_errors": 168
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:50:00Z",
+   "in_octets": 1341532881452,
+   "out_octets": 1099856962785,
+   "in_errors": 170
+  },
+  {
+   "nuar_id": "NUAR:IF:100011",
+   "ts": "2026-06-01T11:55:00Z",
+   "in_octets": 1376416661578,
+   "out_octets": 1128461662488,
+   "in_errors": 172
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:00:00Z",
+   "in_octets": 21090151538,
+   "out_octets": 17093924261,
+   "in_errors": 102
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:05:00Z",
+   "in_octets": 31797254723,
+   "out_octets": 25873748873,
+   "in_errors": 104
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:10:00Z",
+   "in_octets": 43342661944,
+   "out_octets": 35340982794,
+   "in_errors": 105
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:15:00Z",
+   "in_octets": 54320784477,
+   "out_octets": 44343043271,
+   "in_errors": 105
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:20:00Z",
+   "in_octets": 65614215698,
+   "out_octets": 53603656872,
+   "in_errors": 105
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:25:00Z",
+   "in_octets": 76666804580,
+   "out_octets": 62666779755,
+   "in_errors": 106
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:30:00Z",
+   "in_octets": 88084667435,
+   "out_octets": 72029427296,
+   "in_errors": 106
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:35:00Z",
+   "in_octets": 99249579778,
+   "out_octets": 81184655418,
+   "in_errors": 107
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:40:00Z",
+   "in_octets": 110390120514,
+   "out_octets": 90319898821,
+   "in_errors": 109
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:45:00Z",
+   "in_octets": 121669155829,
+   "out_octets": 99568707779,
+   "in_errors": 111
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:50:00Z",
+   "in_octets": 132790985044,
+   "out_octets": 108688607735,
+   "in_errors": 111
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T06:55:00Z",
+   "in_octets": 144135951794,
+   "out_octets": 117991480470,
+   "in_errors": 112
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:00:00Z",
+   "in_octets": 155621199197,
+   "out_octets": 127409383340,
+   "in_errors": 112
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:05:00Z",
+   "in_octets": 166557283689,
+   "out_octets": 136376972623,
+   "in_errors": 114
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:10:00Z",
+   "in_octets": 177987199152,
+   "out_octets": 145749503302,
+   "in_errors": 114
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:15:00Z",
+   "in_octets": 188703890200,
+   "out_octets": 154537189961,
+   "in_errors": 116
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:20:00Z",
+   "in_octets": 199988250675,
+   "out_octets": 163790365551,
+   "in_errors": 117
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:25:00Z",
+   "in_octets": 210758204872,
+   "out_octets": 172621727992,
+   "in_errors": 117
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:30:00Z",
+   "in_octets": 222171347369,
+   "out_octets": 181980504840,
+   "in_errors": 117
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:35:00Z",
+   "in_octets": 232885140667,
+   "out_octets": 190765815344,
+   "in_errors": 117
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:40:00Z",
+   "in_octets": 244137079084,
+   "out_octets": 199992404846,
+   "in_errors": 118
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:45:00Z",
+   "in_octets": 255396535491,
+   "out_octets": 209225159099,
+   "in_errors": 119
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:50:00Z",
+   "in_octets": 266644131281,
+   "out_octets": 218448187647,
+   "in_errors": 119
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T07:55:00Z",
+   "in_octets": 278338305581,
+   "out_octets": 228037410573,
+   "in_errors": 119
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:00:00Z",
+   "in_octets": 289524123675,
+   "out_octets": 237209781410,
+   "in_errors": 119
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:05:00Z",
+   "in_octets": 300691478937,
+   "out_octets": 246367012725,
+   "in_errors": 119
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:10:00Z",
+   "in_octets": 311872628560,
+   "out_octets": 255535555416,
+   "in_errors": 120
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:15:00Z",
+   "in_octets": 322953813598,
+   "out_octets": 264622127147,
+   "in_errors": 122
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:20:00Z",
+   "in_octets": 334646850804,
+   "out_octets": 274210417656,
+   "in_errors": 122
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:25:00Z",
+   "in_octets": 346085916630,
+   "out_octets": 283590451633,
+   "in_errors": 124
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:30:00Z",
+   "in_octets": 357421081447,
+   "out_octets": 292885286783,
+   "in_errors": 124
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:35:00Z",
+   "in_octets": 368254116833,
+   "out_octets": 301768375800,
+   "in_errors": 125
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:40:00Z",
+   "in_octets": 379016995812,
+   "out_octets": 310593936562,
+   "in_errors": 126
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:45:00Z",
+   "in_octets": 390322484333,
+   "out_octets": 319864437149,
+   "in_errors": 127
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:50:00Z",
+   "in_octets": 401464144739,
+   "out_octets": 329000598682,
+   "in_errors": 127
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T08:55:00Z",
+   "in_octets": 413020130041,
+   "out_octets": 338476506629,
+   "in_errors": 127
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:00:00Z",
+   "in_octets": 424753993101,
+   "out_octets": 348098274338,
+   "in_errors": 128
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:05:00Z",
+   "in_octets": 435709662685,
+   "out_octets": 357081923397,
+   "in_errors": 129
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:10:00Z",
+   "in_octets": 446861873073,
+   "out_octets": 366226735915,
+   "in_errors": 129
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:15:00Z",
+   "in_octets": 458344699364,
+   "out_octets": 375642653474,
+   "in_errors": 130
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:20:00Z",
+   "in_octets": 469662391931,
+   "out_octets": 384923161379,
+   "in_errors": 131
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:25:00Z",
+   "in_octets": 480502739405,
+   "out_octets": 393812246308,
+   "in_errors": 133
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:30:00Z",
+   "in_octets": 491870516154,
+   "out_octets": 403133823242,
+   "in_errors": 135
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:35:00Z",
+   "in_octets": 503654381197,
+   "out_octets": 412796592577,
+   "in_errors": 137
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:40:00Z",
+   "in_octets": 515180542213,
+   "out_octets": 422248044610,
+   "in_errors": 138
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:45:00Z",
+   "in_octets": 526846408228,
+   "out_octets": 431814054742,
+   "in_errors": 140
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:50:00Z",
+   "in_octets": 538102342883,
+   "out_octets": 441043921159,
+   "in_errors": 140
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T09:55:00Z",
+   "in_octets": 549257039051,
+   "out_octets": 450190772017,
+   "in_errors": 142
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:00:00Z",
+   "in_octets": 583844188421,
+   "out_octets": 478552234500,
+   "in_errors": 143
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:05:00Z",
+   "in_octets": 618773805475,
+   "out_octets": 507194520484,
+   "in_errors": 145
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:10:00Z",
+   "in_octets": 653383796810,
+   "out_octets": 535574713379,
+   "in_errors": 145
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:15:00Z",
+   "in_octets": 687855042435,
+   "out_octets": 563841134792,
+   "in_errors": 147
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:20:00Z",
+   "in_octets": 722078982566,
+   "out_octets": 591904765700,
+   "in_errors": 147
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:25:00Z",
+   "in_octets": 756396963440,
+   "out_octets": 620045510017,
+   "in_errors": 149
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:30:00Z",
+   "in_octets": 791325422504,
+   "out_octets": 648686846450,
+   "in_errors": 150
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:35:00Z",
+   "in_octets": 825984355233,
+   "out_octets": 677107171288,
+   "in_errors": 150
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:40:00Z",
+   "in_octets": 860374628876,
+   "out_octets": 705307195675,
+   "in_errors": 152
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:45:00Z",
+   "in_octets": 895397220026,
+   "out_octets": 734025720418,
+   "in_errors": 153
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:50:00Z",
+   "in_octets": 929841536594,
+   "out_octets": 762270060004,
+   "in_errors": 154
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T10:55:00Z",
+   "in_octets": 964582882772,
+   "out_octets": 790757963870,
+   "in_errors": 155
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:00:00Z",
+   "in_octets": 998657434265,
+   "out_octets": 818699096094,
+   "in_errors": 155
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:05:00Z",
+   "in_octets": 1033407035457,
+   "out_octets": 847193769072,
+   "in_errors": 156
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:10:00Z",
+   "in_octets": 1068206226129,
+   "out_octets": 875729105423,
+   "in_errors": 158
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:15:00Z",
+   "in_octets": 1102980640226,
+   "out_octets": 904244124982,
+   "in_errors": 159
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:20:00Z",
+   "in_octets": 1137882426286,
+   "out_octets": 932863589551,
+   "in_errors": 161
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:25:00Z",
+   "in_octets": 1172569151921,
+   "out_octets": 961306704572,
+   "in_errors": 163
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:30:00Z",
+   "in_octets": 1206514578771,
+   "out_octets": 989141954589,
+   "in_errors": 164
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:35:00Z",
+   "in_octets": 1240897903839,
+   "out_octets": 1017336281144,
+   "in_errors": 164
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:40:00Z",
+   "in_octets": 1275717005745,
+   "out_octets": 1045887944707,
+   "in_errors": 165
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:45:00Z",
+   "in_octets": 1310672775298,
+   "out_octets": 1074551675740,
+   "in_errors": 167
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:50:00Z",
+   "in_octets": 1345140914460,
+   "out_octets": 1102815549853,
+   "in_errors": 168
+  },
+  {
+   "nuar_id": "NUAR:IF:100012",
+   "ts": "2026-06-01T11:55:00Z",
+   "in_octets": 1379364643562,
+   "out_octets": 1130879007716,
+   "in_errors": 169
+  }
+ ]
+}

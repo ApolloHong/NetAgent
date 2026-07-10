@@ -1,0 +1,216 @@
+{
+  "devices": [
+    {
+      "canonical": "core1",
+      "eve_name": "vMX-core1",
+      "eve_node_id": "1",
+      "mcp_name": "core1",
+      "mgmt_ip": "172.20.20.11"
+    },
+    {
+      "canonical": "core2",
+      "eve_name": "vMX-core2",
+      "eve_node_id": "2",
+      "mcp_name": "core2",
+      "mgmt_ip": "172.20.20.12"
+    },
+    {
+      "canonical": "core3",
+      "eve_name": "vMX-core3",
+      "eve_node_id": "3",
+      "mcp_name": "core3",
+      "mgmt_ip": "172.20.20.13"
+    },
+    {
+      "canonical": "core4",
+      "eve_name": "vMX-core4",
+      "eve_node_id": "4",
+      "mcp_name": "core4",
+      "mgmt_ip": "172.20.20.14"
+    },
+    {
+      "canonical": "edge1",
+      "eve_name": "vMX-edge1",
+      "eve_node_id": "5",
+      "mcp_name": "edge1",
+      "mgmt_ip": "172.20.20.15"
+    },
+    {
+      "canonical": "edge2",
+      "eve_name": "vMX-edge2",
+      "eve_node_id": "6",
+      "mcp_name": "edge2",
+      "mgmt_ip": "172.20.20.16"
+    },
+    {
+      "canonical": "edge3",
+      "eve_name": "vMX-edge3",
+      "eve_node_id": "7",
+      "mcp_name": "edge3",
+      "mgmt_ip": "172.20.20.17"
+    },
+    {
+      "canonical": "edge4",
+      "eve_name": "vMX-edge4",
+      "eve_node_id": "8",
+      "mcp_name": "edge4",
+      "mgmt_ip": "172.20.20.18"
+    }
+  ],
+  "interfaces": [
+    {
+      "canonical": "core1:ge-0/0/0",
+      "capacity_mbps": 1000.0,
+      "device": "core1",
+      "ifname": "ge-0/0/0",
+      "link": "core1-core2",
+      "nuar_id": "NUAR:IF:100001"
+    },
+    {
+      "canonical": "core2:ge-0/0/0",
+      "capacity_mbps": 1000.0,
+      "device": "core2",
+      "ifname": "ge-0/0/0",
+      "link": "core1-core2",
+      "nuar_id": "NUAR:IF:100002"
+    },
+    {
+      "canonical": "core1:ge-0/0/1",
+      "capacity_mbps": 1000.0,
+      "device": "core1",
+      "ifname": "ge-0/0/1",
+      "link": "core1-core3",
+      "nuar_id": "NUAR:IF:100003"
+    },
+    {
+      "canonical": "core3:ge-0/0/0",
+      "capacity_mbps": 1000.0,
+      "device": "core3",
+      "ifname": "ge-0/0/0",
+      "link": "core1-core3",
+      "nuar_id": "NUAR:IF:100004"
+    },
+    {
+      "canonical": "core1:ge-0/0/2",
+      "capacity_mbps": 2000.0,
+      "device": "core1",
+      "ifname": "ge-0/0/2",
+      "link": "core1-edge1",
+      "nuar_id": "NUAR:IF:100005"
+    },
+    {
+      "canonical": "edge1:ge-0/0/0",
+      "capacity_mbps": 2000.0,
+      "device": "edge1",
+      "ifname": "ge-0/0/0",
+      "link": "core1-edge1",
+      "nuar_id": "NUAR:IF:100006"
+    },
+    {
+      "canonical": "core2:ge-0/0/1",
+      "capacity_mbps": 1000.0,
+      "device": "core2",
+      "ifname": "ge-0/0/1",
+      "link": "core2-core4",
+      "nuar_id": "NUAR:IF:100007"
+    },
+    {
+      "canonical": "core4:ge-0/0/0",
+      "capacity_mbps": 1000.0,
+      "device": "core4",
+      "ifname": "ge-0/0/0",
+      "link": "core2-core4",
+      "nuar_id": "NUAR:IF:100008"
+    },
+    {
+      "canonical": "core2:ge-0/0/2",
+      "capacity_mbps": 2000.0,
+      "device": "core2",
+      "ifname": "ge-0/0/2",
+      "link": "core2-edge2",
+      "nuar_id": "NUAR:IF:100009"
+    },
+    {
+      "canonical": "edge2:ge-0/0/0",
+      "capacity_mbps": 2000.0,
+      "device": "edge2",
+      "ifname": "ge-0/0/0",
+      "link": "core2-edge2",
+      "nuar_id": "NUAR:IF:100010"
+    },
+    {
+      "canonical": "core3:ge-0/0/1",
+      "capacity_mbps": 1000.0,
+      "device": "core3",
+      "ifname": "ge-0/0/1",
+      "link": "core3-core4",
+      "nuar_id": "NUAR:IF:100011"
+    },
+    {
+      "canonical": "core4:ge-0/0/1",
+      "capacity_mbps": 1000.0,
+      "device": "core4",
+      "ifname": "ge-0/0/1",
+      "link": "core3-core4",
+      "nuar_id": "NUAR:IF:100012"
+    },
+    {
+      "canonical": "core3:ge-0/0/2",
+      "capacity_mbps": 2000.0,
+      "device": "core3",
+      "ifname": "ge-0/0/2",
+      "link": "core3-edge3",
+      "nuar_id": "NUAR:IF:100013"
+    },
+    {
+      "canonical": "edge3:ge-0/0/0",
+      "capacity_mbps": 2000.0,
+      "device": "edge3",
+      "ifname": "ge-0/0/0",
+      "link": "core3-edge3",
+      "nuar_id": "NUAR:IF:100014"
+    },
+    {
+      "canonical": "core4:ge-0/0/2",
+      "capacity_mbps": 2000.0,
+      "device": "core4",
+      "ifname": "ge-0/0/2",
+      "link": "core4-edge4",
+      "nuar_id": "NUAR:IF:100015"
+    },
+    {
+      "canonical": "edge4:ge-0/0/0",
+      "capacity_mbps": 2000.0,
+      "device": "edge4",
+      "ifname": "ge-0/0/0",
+      "link": "core4-edge4",
+      "nuar_id": "NUAR:IF:100016"
+    }
+  ],
+  "prefixes": [
+    {
+      "attach_device": "edge1",
+      "canonical": "cust-A/24",
+      "ce": "ce-A",
+      "ip_prefix": "10.10.1.0/24"
+    },
+    {
+      "attach_device": "edge2",
+      "canonical": "cust-B/24",
+      "ce": "ce-B",
+      "ip_prefix": "10.10.2.0/24"
+    },
+    {
+      "attach_device": "edge3",
+      "canonical": "cust-C/24",
+      "ce": "ce-C",
+      "ip_prefix": "10.10.3.0/24"
+    },
+    {
+      "attach_device": "edge4",
+      "canonical": "cust-D/24",
+      "ce": "ce-D",
+      "ip_prefix": "10.10.4.0/24"
+    }
+  ]
+}

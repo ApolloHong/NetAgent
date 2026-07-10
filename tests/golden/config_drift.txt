@@ -1,0 +1,30 @@
+[JUMEAU] 10:31:20 zone emulee prete: 8 routeurs, 4 prefixes clients, base de reference capturee.
+[SCENARIO] drift-isis-metric-01: Congestion sur le lien core3-core4 et report de trafic, sans panne materielle
+[PANNE] 10:31:35 injection de config_drift.isis_metric.core1-core2 (validee: oui)
+[HEARTBEAT] 10:31:40 anomalie: chute de trafic sur core1-core2 (-30 points) a 10:31:35 ; chute de trafic sur core2-core4 (-31 points) a 10:31:35 ; utilisation lien core3-core4 a 93% (seuil 85%), point de rupture a 10:31:35. Incident INC-0001 cree.
+[HEARTBEAT] 10:31:45 symptome supplementaire rattache a INC-0001: derive de configuration sur core1 (protocols.isis.interface.ge-0/0/0.metric): 10 -> 1000
+[RCA] plan: correler avec les changements de config recents, localiser sur la topologie, verifier le plan de controle, puis valider la cause par contrefactuel dans le bac a sable.
+[RCA] read_telemetry(core1-core2, 24) -> 23 echantillons sur core1:ge-0/0/0; dernier: util 0%, latence 3 ms, erreurs 0/intervalle
+[RCA] read_telemetry(core2-core4, 24) -> 23 echantillons sur core2:ge-0/0/1; dernier: util 11%, latence 3 ms, erreurs 2/intervalle
+[RCA] diff_config(core1) -> protocols.isis.interface.ge-0/0/0.metric: 10 -> 1000 (commit a 10:31:35)
+[RCA] get_bgp_state() -> toutes les sessions BGP sont etablies et stables
+[RCA] get_isis_adjacencies() -> toutes les adjacences IS-IS sont Up; metriques inhabituelles: core1-core2=1000
+[RCA] get_link_traffic(core3-core4) -> 92% (920/1000 Mbps); flux: cust-A/24<->cust-D/24 620M, cust-C/24<->cust-D/24 300M
+[RCA] get_topology_neighbours(core3) -> voisins: core1, core4, edge3
+[RCA] get_affected_clients(all) -> clients impactes: cust-A/24 (degraded: traverse un lien congestionne), cust-C/24 (degraded: traverse un lien congestionne), cust-D/24 (degraded: traverse un lien congestionne)
+[RCA] shortest_path(cust-A/24, cust-D/24, live) -> chemin (live): edge1 > core1 > core3 > core4 > edge4 (cout 40)
+[RCA] shortest_path(cust-A/24, cust-D/24, baseline) -> chemin (baseline): edge1 > core1 > core2 > core4 > edge4 (cout 40)
+[RCA] le lien congestionne core3-core4 est traite comme un EFFET (la congestion n'est pas un type de panne injectable); la cause doit etre en amont.
+[RCA] hypotheses classees: 1) metrique IS-IS 10 -> 1000 sur core1 (ge-0/0/0) [score 95]
+[RCA] hypothese: metrique IS-IS 10 -> 1000 sur core1 (ge-0/0/0). Validation contrefactuelle dans le jumeau (bac a sable)...
+[RCA] counterfactual_inject(core1-core2) -> en rejouant cette cause dans le bac a sable, les symptomes observes se REPRODUISENT. Cause racine confirmee.
+[RESULTAT] Cause racine: metrique IS-IS 10 -> 1000 sur core1 (ge-0/0/0). Clients impactes: cust-A/24, cust-C/24, cust-D/24. Confiance: elevee.
+[RESULTAT] Chaine de preuves:
+  1. symptomes (INC-0001): chute de trafic sur core1-core2 (-30 points) a 10:31:35 ; chute de trafic sur core2-core4 (-31 points) a 10:31:35 ; utilisation lien core3-core4 a 93% (seuil 85%), point de rupture a 10:31:35 ; derive de configuration sur core1 (protocols.isis.interface.ge-0/0/0.metric): 10 -> 1000 — debut estime t=19
+  2. telemetrie core1-core2: rupture de la serie 'utilisation_pct' a t=20 (decalage -62)
+  3. telemetrie core2-core4: rupture de la serie 'utilisation_pct' a t=20 (decalage -62)
+  4. derive de config sur core1: protocols.isis.interface.ge-0/0/0.metric 10 -> 1000 (commit t=19)
+  5. le trafic cust-A/24->cust-D/24 s'est reporte: edge1 > core1 > core2 > core4 > edge4 devient edge1 > core1 > core3 > core4 > edge4
+  6. contrefactuel: la re-injection de cette cause dans le bac a sable reproduit exactement la signature des symptomes
+[EVALUATION] cause racine: PASS (correspondance exacte (type, object, where)) ; clients impactes: PASS (ensemble de clients exact)
+[RECUPERATION] 10:32:05 panne retiree (validee: oui), jumeau redevenu propre: oui.

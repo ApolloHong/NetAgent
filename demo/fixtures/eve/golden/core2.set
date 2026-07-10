@@ -1,0 +1,6 @@
+set interfaces ge-0/0/0 mtu 9192
+set protocols isis interface ge-0/0/0.0 metric 10
+set interfaces ge-0/0/1 mtu 9192
+set protocols isis interface ge-0/0/1.0 metric 10
+set interfaces ge-0/0/2 mtu 9192
+set protocols isis interface ge-0/0/2.0 metric 10

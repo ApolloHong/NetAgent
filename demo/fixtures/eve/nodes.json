@@ -1,0 +1,70 @@
+{
+ "code": 200,
+ "status": "success",
+ "data": {
+  "1": {
+   "name": "vMX-core1",
+   "template": "vmx",
+   "status": 2,
+   "cpu": 4,
+   "ram": 8192,
+   "mgmt": "172.20.20.11"
+  },
+  "2": {
+   "name": "vMX-core2",
+   "template": "vmx",
+   "status": 2,
+   "cpu": 4,
+   "ram": 8192,
+   "mgmt": "172.20.20.12"
+  },
+  "3": {
+   "name": "vMX-core3",
+   "template": "vmx",
+   "status": 2,
+   "cpu": 4,
+   "ram": 8192,
+   "mgmt": "172.20.20.13"
+  },
+  "4": {
+   "name": "vMX-core4",
+   "template": "vmx",
+   "status": 2,
+   "cpu": 4,
+   "ram": 8192,
+   "mgmt": "172.20.20.14"
+  },
+  "5": {
+   "name": "vMX-edge1",
+   "template": "vmx",
+   "status": 2,
+   "cpu": 4,
+   "ram": 8192,
+   "mgmt": "172.20.20.15"
+  },
+  "6": {
+   "name": "vMX-edge2",
+   "template": "vmx",
+   "status": 2,
+   "cpu": 4,
+   "ram": 8192,
+   "mgmt": "172.20.20.16"
+  },
+  "7": {
+   "name": "vMX-edge3",
+   "template": "vmx",
+   "status": 2,
+   "cpu": 4,
+   "ram": 8192,
+   "mgmt": "172.20.20.17"
+  },
+  "8": {
+   "name": "vMX-edge4",
+   "template": "vmx",
+   "status": 2,
+   "cpu": 4,
+   "ram": 8192,
+   "mgmt": "172.20.20.18"
+  }
+ }
+}
