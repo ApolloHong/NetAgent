@@ -1,0 +1,344 @@
+# netops-demo · Architecture & Design Rationale
+
+> An **operational-intelligence layer** on top of a **network digital twin**:
+> **automatic incident detection → root-cause analysis (validated by counterfactual replay) → predictive capacity / SLA management**,
+> where every conclusion is verifiable, reproducible, and statistically defensible.
+> Setting: a telecom backbone operator (Orange Wholesale internship prototype). Code and comments are English; operator-facing traces are French.
+
+---
+
+## 0. Executive summary (the one-paragraph pitch)
+
+From production device configuration, a pipeline stands up a faithful **emulated copy of a network zone** so changes can be tested safely before touching production. On top of that twin, this project delivers two capabilities and a rigorous way to trust them:
+
+1. **Heartbeat detection** — a periodic patrol that turns raw telemetry, control-plane events, and config drift into structured `Incident`s.
+2. **Root-cause analysis** — an agentic loop that reasons across *heterogeneous evidence* (config text, telemetry time-series, topology graph, BGP/IS-IS state), ranks candidate causes while **distinguishing cause from effect**, and **confirms the top hypothesis by re-injecting it into a sandbox copy of the twin** before concluding.
+3. A third, forward-looking layer composes a **time-series forecaster** with a **steady-state performance model (RouteNet-Fermi)** so a forecast of *utilisation* becomes a forecast of *SLA breach probability*, emitted as a preventive `Incident(source="prediction")` into the same pipeline.
+
+The central engineering property: **every mock names the real backend it stands in for. Swapping the simulation for the real system (EVE-NG + junos-mcp-server + gNMI + Batfish) is a matter of implementing an interface, not rewriting logic.** Everything runs **offline, deterministically, with zero required dependencies** beyond `networkx` + `numpy`.
+
+---
+
+## 1. The problems being solved
+
+| Layer | Problem | Deliverable |
+|---|---|---|
+| **Detection** | Can we find an incident **automatically and fast**? | `heartbeat/` |
+| **Root cause** | Can we **separate cause from effect** and name the true source (not the *congested link*, which is a symptom)? | `rca/` agent |
+| **Validation** | How do we **prove** a root-cause hypothesis without touching the real network? | `counterfactual.py` |
+| **Prediction** | Can we warn **before** the fault happens (capacity / SLA)? | `prediction/` + `perf/` |
+| **Evaluation** | Is the claim *"model A beats model B"* **defensible** rather than eyeballed? | `prediction/benchmark/` |
+
+**Evaluation philosophy that drives the whole design:** judge the agent on whether it **gets the job done** under controlled failures — does it detect, does it name the true root cause, does it identify the right affected clients — **not** on how fluently it explains itself.
+
+---
+
+## 2. Six design principles (the backbone of the "thinking")
+
+1. **Detection broad, actions narrow.**
+   The heartbeat layer only *detects and reports* — it holds no mutation handle on the twin. The RCA layer reads the live twin **read-only** and experiments **only in sandbox copies**. Nothing in the whole project can change a real network. Fault injection is a test harness, gated behind an explicit `--allow-writes` for the real-lab (EVE-NG) path.
+
+2. **Seam-first (mock → real).**
+   Every interface's docstring names the real backend it maps to (EVE-NG REST, junos-mcp-server over NETCONF/YANG/OpenConfig, gNMI streaming, Batfish/pybatfish, MCP tool servers, LangGraph orchestration, NautilusTrader). Missing dependency or unreachable endpoint ⇒ **silent fall back to a recorded fixture** plus one `[INFO]` line. The swap from mock to real is implementing an ABC, never editing detection/RCA/eval code.
+
+3. **Causal discipline (cause vs effect).**
+   A congested link is an **effect**, never a cause on its own. A candidate root cause must satisfy three tests: (a) it is an **injectable fault type**; (b) it is **temporally aligned** — its timestamp is at or before the symptom onset; (c) **counterfactual replay reproduces the incident's symptom signature**. Only then is it concluded.
+
+4. **Prediction = intent for the closed loop.**
+   A forecast does not produce a "number"; it produces an `Incident(source="prediction")` that enters the **same** pipeline the heartbeat feeds. The temporal dimension comes **entirely** from the time-series forecaster; the performance model is a **steady-state map with no time axis**.
+
+5. **Honest evaluation.**
+   Ranking is on **MASE** (point) and **CRPS** (probabilistic), **never** MAPE. No superiority claim appears without an accompanying **Diebold–Mariano p-value**. Coverage is **always** reported next to sharpness. Every figure is regenerated from a **frozen tidy table**, never by re-running models. The report **auto-populates a "limits" section** (under-coverage, non-uniform PIT, excluded MAPE points, unavailable models).
+
+6. **Determinism.**
+   Virtual clock + fixed seeds + deterministic tie-breaks ⇒ two runs produce **byte-identical** traces and `results.json`. Every number is reproducible from a manifest (seed, config, data window, model availability).
+
+---
+
+## 3. System architecture — overview
+
+```mermaid
+flowchart TB
+    subgraph TWIN["Digital Twin · SimTwin (virtual clock · fixed seed)"]
+        T["topology · SPF · flows · BGP/IS-IS · telemetry · config · snapshot()"]
+    end
+
+    FAULTS["faults/ injector<br/>drift · linkdown · flap · mtu · delay"] -->|inject / recover / validate| T
+
+    subgraph A["A. Reactive pipeline (fault already happened)"]
+        HB["heartbeat detector<br/>thresholds + change-point + events + config audit"] --> IH["Incident<br/>source = heartbeat"]
+        IH --> RCA["RCA agent<br/>plan → act → observe → converge"]
+        RCA --> TOOLS["tools/ · 10 diagnostic tools (MCP-shaped)"]
+        RCA --> RANK["hypothesis ranking<br/>temporal alignment · effect ≠ cause"]
+        RCA --> CF["counterfactual validation ★<br/>sim / perf / batfish / eve"]
+        CF --> REP["RootCauseReport<br/>cause + evidence chain + affected clients + confidence"]
+    end
+
+    subgraph B["B. Predictive pipeline (fault not yet happened)"]
+        P1["① time-series forecaster<br/>naive / SARIMAX / darts → future traffic matrix (quantiles)"]
+        P2["② ★PerformanceModel: RouteNet-Fermi / analytic★<br/>(topology, routing, traffic matrix) → delay / jitter / loss"]
+        P3["③ breach probability<br/>P(load &gt; threshold) / P(delay &gt; SLA)"]
+        IP["Incident<br/>source = prediction<br/>type = predicted_sla_breach / predicted_congestion"]
+        P1 --> P2 --> P3 --> IP
+    end
+
+    T -->|read-only| HB
+    T -->|read-only| P1
+    T -->|sandbox copy| CF
+
+    IH --> PIPE["one shared Incident pipeline"]
+    IP --> PIPE
+
+    subgraph C["C. Evaluation"]
+        E1["RCA eval: 7/7 detection · 7/7 diagnosis · 0 false positives"]
+        E2["forecast-bench: rolling-origin + Diebold–Mariano significance"]
+        E3["perf eval: RouteNet vs analytic, delay skill +0.88"]
+    end
+    PIPE --> C
+```
+
+> ★ marks where **RouteNet-Fermi** appears: as the performance-model layer and as a counterfactual oracle.
+
+---
+
+## 4. Layer-by-layer deep dive
+
+Each layer is presented as **Problem → Assumption → Method (with algorithmic detail) → Evidence**.
+
+### 4.1 The digital twin (foundation) — `twin/`
+
+- **Problem.** Nothing to detect, diagnose, or forecast without a network whose behaviour is faithful, controllable, and cheap.
+- **Assumption.** A production zone's behaviour can be reproduced by a deterministic simulation: ~8 Juniper routers, IS-IS metrics, BGP sessions, customer prefixes whose reachability depends on paths, and a static demand matrix routed over shortest paths.
+- **Method.**
+  - `SimTwin` holds a `networkx` graph; **Dijkstra SPF** with a deterministic lexicographic tie-break computes per-demand paths; link utilisation = `Σ(demand of paths crossing the link) / capacity`.
+  - Every state mutation triggers `recompute()` → paths → per-link load → per-prefix reachability. A down link with no alternate ⇒ prefixes unreachable.
+  - `snapshot()` / `sandbox()` give a **deep-copyable** frozen baseline — this is what counterfactual replay clones.
+  - `signature()` returns a **noise-free symptom signature** (sets of down/congested/saturated/error links, down sessions, unreachable/degraded prefixes) used both as detection ground truth and for counterfactual matching.
+  - `TwinBackend` (ABC) names its real backends: **EVE-NG REST** for lab lifecycle, **junos-mcp-server over NETCONF** for config/state reads, **gNMI** for streaming telemetry. `EveNgTwin` implements Phase-1 read-only against real endpoints (with fixture fallback) and gated Phase-2 writes.
+- **Evidence.** Three scenarios + the eval run fully offline; two runs are byte-identical; a forecast-oriented `TrafficModel` (daily+weekly seasonality, trend, bounded deterministic noise, exogenous fault response) is **opt-in** so the incident scenarios keep identical symptom signatures.
+
+### 4.2 Detection — `heartbeat/`
+
+- **Problem.** Catch fast on-change failures within a tick and slow drifts within a few, with defensible, simple methods and near-zero false positives.
+- **Assumption.** Every fault leaves an observable trace in one of three channels: **telemetry time-series**, **control-plane events**, or a **running-vs-golden config audit**. Detection may be broad; it never acts.
+- **Method.** A periodic patrol combines four signals, deduplicated so one fault = one incident:
+  - **on-change events** (link/session down) → caught within one tick;
+  - **static thresholds** (utilisation > 85 %, errors, latency);
+  - **change-point detection** — a max standardized mean-shift split (numpy, no scipy) that also **pins the onset tick**;
+  - **config audit** every N ticks (running vs golden diff).
+  The pure detection checks live in `heartbeat/checks.py` and are **shared verbatim** with the telemetry replay engines (builtin + optional NautilusTrader) — the logic is never duplicated.
+- **Evidence.** **Detection 7/7, mean latency 1 tick, 0 false positives** (a fault-free "clean" case measures detection precision explicitly).
+
+### 4.3 Root cause + counterfactual — `rca/`
+
+- **Problem.** Given an incident, gather heterogeneous evidence, rank candidate causes, and — critically — **not mistake a downstream effect (a congested link) for the upstream cause**.
+- **Assumption (the load-bearing one).** The true cause is an **injectable fault** whose onset is **at or before** the symptom onset; congestion is an *effect* to be explained, not an injectable fault type, hence never a root cause on its own.
+- **Method.** The agent runs a plan → act → observe → refine → validate → converge loop (a plain Python loop; comment notes the real system is LangGraph). Two interchangeable reasoners behind one interface:
+  - **`RulesReasoner` (default, deterministic):** pin onset via change-point; sweep evidence (config diffs on every device, BGP/IS-IS state, events); build candidates **only** from items temporally aligned (≤ onset) — *guard #1*; rank with the **topological/causal typing** that a congested link is an effect unless it has its own upstream trigger — *guard #2*; then **counterfactual-inject** the top candidate and confirm only if the symptom signature reproduces.
+  - **`LlmReasoner` (optional, gated):** an Anthropic Messages API ReAct loop with genuine `tool_use` over the **same tool registry**; falls back to rules on any missing key/error, producing the same structured report.
+  - **Diagnostic tools** (`tools/`, 10 tools in MCP manifest shape): `shortest_path`, `get_link_traffic`, `get_affected_clients`, `get_topology_neighbours`, `get_bgp_state`, `get_isis_adjacencies`, `get_device_config`, `diff_config`, `read_telemetry`, and `counterfactual_inject`.
+  - **Counterfactual oracle ladder** (`--counterfactual`, speed vs fidelity):
+    `perf` (performance model — **milliseconds**, no lab) → `sim` (sandbox twin replay — **exact w.r.t. the simulation**, default) → `batfish` (static analysis — answers *how routing would change*) → `eve` (lab replay — highest fidelity, slowest, Phase-2).
+- **Evidence.** On the config-drift scenario the agent correctly names the **core1-core2 IS-IS metric drift (the source)** rather than the congested **core3-core4 (the symptom)**. **Diagnosis 7/7, affected-client set 7/7, ~×194** vs human baselines. The `perf` oracle's verdicts are **identical to the `sim` oracle** on the drift and link-down scenarios.
+
+### 4.4 Performance model: RouteNet-Fermi — `perf/`
+
+- **Problem.** A forecaster gives *utilisation*; an SLA is about *delay / jitter / loss*. Something must map network state to per-path QoS.
+- **Assumption.** The performance model is **steady-state — it has no time axis**: `(topology, routing, traffic matrix, queue config) → per-path delay/jitter/loss, per-link load`. Per-link load is **derived inside** the model (`load = Σ traffic of crossing paths / capacity`) as an input feature — **never forecast** by this layer.
+- **Method.**
+  - **Default `AnalyticPerformanceModel` (pure numpy):** M/M/1-style per-hop queueing delay that **saturates safely** as ρ → 1 (clamped, bounded by the physical queue size — never inf), transmission delay from capacities, variance-based jitter, buffer-overflow loss. This is the dependency-free baseline and the universal fallback.
+  - **`RouteNetFermi` (optional `[perf]`, plain PyTorch):** a from-scratch re-implementation of RouteNet-Fermi (Ferriol-Galmés et al., IEEE/ACM ToN 2023, arXiv:2212.12070; Apache-2.0 reference). **No torch-geometric / torch-scatter** — custom message passing over explicit index tensors. See §7 for the architecture.
+  - **Adapter:** `network_state_from_twin` builds a `NetworkState` from the existing `TwinBackend` (topology, capacities, routing from the twin's SPF) plus a `TrafficMatrixProvider` (§4.6), so callers never construct it by hand.
+- **Evidence.** Against the analytic baseline on exact M/M/1/K finite-buffer labels: **delay skill +0.88 (MAPE 1.6 % vs 13.8 %), jitter +0.76, loss +0.99**; on unseen routing regimes, degradation is only **+0.1 pt**; trains in ~1 min on CPU.
+
+### 4.5 Prediction → intent — `prediction/`
+
+- **Problem.** Turn "the corridor will congest" into "customer A's latency SLA will breach in ~K intervals, probability 0.xx" and feed it to the loop **before** it happens.
+- **Assumption.** Time comes **only** from the forecaster. The composition is `forecaster → future traffic matrix (quantiles) → PerformanceModel → future KPI distribution → breach probability`. Capacity is a **tail question**, so it must use the forecast *distribution*, never the point forecast.
+- **Method.**
+  - **Stage 1** — the existing `CapacityPredictor` ladder (default `SeasonalNaivePredictor`: weekly profile × ratio drift with week-over-week empirical quantiles; optional SARIMAX/darts) forecasts each traffic-matrix entry at horizon k, with p50/p90/p95/p99.
+  - **Stage 2** — build the future `NetworkState` (forecast demand + **current** routing + current queues), run the performance model once per demand quantile → per-path delay/jitter/loss + per-link load at t+k.
+  - **Stage 3** — `breach.py` interpolates the survival function through the quantiles to compute P(load > threshold) and P(delay > SLA), and the earliest step crossing a configurable probability level.
+  - **Stage 4** — `intent.py` emits `Incident(source="prediction", type="predicted_sla_breach" | "predicted_congestion")` with the target link/path, predicted time+horizon, probability, KPI summary, and would-be affected clients (reusing the same scoping logic as `get_affected_clients`).
+  - A commented **seam** notes the closed loop's next step — a preventive, twin-validated, gated change proposed by the agent — is deliberately *not* implemented.
+- **Evidence.** In `predicted_sla_breach` / `predicted_congestion`, the forewarning is raised **~140 ticks (~11.7 h)** before the breach actually occurs in the sim, timing error only +10. The `Incident.source` seam is genuinely exercised.
+
+### 4.6 Traffic-matrix provider — `perf/traffic_matrix.py`
+
+- **Problem.** The performance model needs **per-demand** traffic, but real telemetry gives **per-link** counters.
+- **Assumption.** Recovering a demand matrix from link counters is an **under-determined inverse problem** (network tomography).
+- **Method.** `SimTrafficMatrix` (ground truth from the twin) and `GravityTrafficMatrix` (gravity-model prior + non-negative least squares against the routing-matrix × demand ≈ observed-loads constraints). A principled estimator (regularised / optimal-transport, temporal coupling) is a documented seam.
+- **Evidence.** `gravity_report` quantifies the gap: feeding *estimated* instead of *true* demands costs only **0.6 % delay-MAPE / 0.3 pt load-MAE** downstream — printed by `perf predict`.
+
+### 4.7 Rigorous benchmark — `prediction/benchmark/`
+
+- **Problem.** `forecast-eval` is an eyeballed table. Make "A beats B" **statistically defensible**.
+- **Assumptions.** (1) Time-series evaluation **never** uses a random split — rolling origins only. (2) Only **calendar** features are known-in-advance; config/event features are frozen at the origin, else it is leakage. (3) Rank on MASE/CRPS. (4) A difference in means is **not** evidence.
+- **Method.**
+  - **Protocol** — rolling-origin backtest (expanding/sliding) with an **explicit leakage assertion** (this actually caught and fixed a real leak in `build_exog`); results frozen to `tidy.npz` + `manifest.json` — every metric/test/figure reads that artefact.
+  - **Metrics** — MASE (in-sample seasonal-naive scale), **CRPS = 2 × mean pinball over a dense quantile grid** (reduces to MAE for a point forecast), Winkler/MSIS, coverage beside sharpness; a separate operational table (Brier + skill, precision/recall/F1, ROC-AUC/PR-AUC + curves, **lead-time median+IQR**, false-alarm rate).
+  - **Significance** — **Diebold–Mariano** with a Newey–West long-run variance (bandwidth L = h−1), the **Harvey–Leybourne–Newbold** small-sample correction, a t(n−1) reference (scipy, normal fallback), one-sided by default (H1: A more accurate than B), pairwise matrices per horizon/loss, plus **Holm-adjusted** p-values.
+  - **Calibration** — PIT with KS + chi-square uniformity tests, a shape classifier (calibré / sous-dispersé / sur-dispersé / biais), reliability bands, breach reliability with per-bin counts.
+  - **Report** — French console + verdict with a DM p-value, markdown with an auto-populated *limites* section, machine-readable `results.json`.
+- **Evidence.** naive+exog: **MASE 0.48 (skill +0.71), CRPS 1.28, DM p = 0.002 (Holm 0.002)** — a statistically significant win; the report **automatically flags** that the plain naive model under-covers and has a "sous-dispersé" PIT (KS p < 0.001).
+
+---
+
+## 5. The two-stage prediction pipeline (RouteNet-Fermi's main stage)
+
+```mermaid
+flowchart LR
+    H["historical telemetry / demand"] --> S1["① time-series forecaster (HAS a time axis)<br/>naive+exog / SARIMAX / darts"]
+    S1 --> TM["future traffic matrix @ t+k<br/>{p50, p90, p95, p99}"]
+    TM --> S2["② ★PerformanceModel (NO time axis · steady-state)★<br/>make_performance_model(gnn | analytic)<br/>run predict() once per demand quantile"]
+    S2 --> KPI["future KPI distribution @ t+k<br/>{delay, jitter, loss, link load}"]
+    KPI --> S3["③ breach.py — survival-function interpolation"]
+    S3 --> PR["P(load &gt; 85%) and P(delay &gt; SLA)"]
+    PR --> S4["④ intent.py"]
+    S4 --> INC["Incident(source=prediction)<br/>&quot;core2-core4 will breach in ~140 ticks (~11.7 h), prob 0.86&quot;"]
+```
+
+**Three invariants (talking points):**
+- Time comes **only** from ①. RouteNet-Fermi in ② does a **steady-state map only** — it does not forecast time.
+- Link load is **derived inside** ② from the traffic matrix (`load = Σ traffic / capacity`) — **not** predicted.
+- Whether ② is `analytic` or `gnn` is **transparent** to everything above — that is the whole point of the seam.
+
+> ⚠️ **Two different "gnn"s — do not conflate:**
+> **RouteNet-Fermi = the *performance model*** (`perf/routenet/`) — ✅ implemented, trained, wired into 3 places.
+> **`GnnPredictor` = a *time-series forecaster*** (`predictor.py`) — ❌ a deliberate empty seam (RouteNet-Fermi has no time axis, so it is *not* a forecaster).
+
+---
+
+## 6. RouteNet-Fermi in detail — why *this* architecture
+
+The value of a **learned** performance model over a hand-written queueing formula is *generalisation*: real networks have WFQ/DRR/SP scheduling and queue interactions where **no closed-form exists**, and the model must generalise to unseen topologies and capacities. RouteNet-Fermi achieves this through a **physics-informed readout**: the network predicts *occupancy*, and *capacity enters analytically*.
+
+Entities (hidden size H = 32), T = 8 message-passing iterations, three GRUs:
+
+```
+Stage 1  LINK & QUEUE → PATH   (order matters → GRU, not sum)
+         per path, gather [link_state, queue_state] per hop IN PATH ORDER,
+         run a GRU with h0 = path_state; keep the per-hop output sequence
+         AND the final hidden state. Padding masked to contribute zero.
+
+Stage 2  PATH → QUEUE          (unordered set → SUM, permutation-invariant)
+         each queue sums the path-state-sequence entries of the paths that
+         cross it at the right hop position; queue_state = GRUCell(sum, .).
+
+Stage 3  QUEUE → LINK          (ordered → GRU)
+         each link runs a GRU over its queues' states; final hidden = link_state.
+
+Readouts (physics-informed):
+  delay  = Σ_hops (occupancy_hop / capacity_hop) + pkt_size · Σ_hops (1/capacity_hop)
+  jitter = Σ_hops (ratio_hop / capacity_hop)
+  loss   = sigmoid(readout(final path_state))
+```
+
+Deviations from the reference are documented in the module docstring: **simplified path features** `[traffic, packets]` (+ optional calendar) instead of the reference's 8 packet-simulator parameters; **z-score statistics computed from the training set** and saved in the checkpoint (not hardcoded); occupancy readouts **bounded by the buffer size** and per-head loss normalisation (my addition — the reference trains one model per KPI; keeping a shared trunk jointly trainable needed the balancing to stop the jitter head from starving the delay head).
+
+**Where its value is real vs. constructed (honest framing):** in this sim the analytic baseline is already strong (it is essentially the sim's own physics), and the +0.88 skill is measured against **finite-buffer M/M/1/K labels** introduced specifically to give the GNN something non-trivial to learn — a *non-circular, measurable* claim, not a proof the GNN is indispensable on a toy network. Its genuine value is **architectural** (the SLA-prediction chain, the millisecond counterfactual oracle, the data-driven labelling seam) in the demo, and **data-driven generalisation** (learning from measurements when no closed form exists; cross-topology transfer) in a real deployment — the latter marked as a clean seam, not faked.
+
+---
+
+## 7. Mock → Real seam table (the engineering core)
+
+| Demo component (interface) | Real backend it maps to |
+|---|---|
+| `twin/backend.py` `TwinBackend` / `sim_twin.py` | EVE-NG lab (vMX VCP+VFP, vQFX) + ZTP, driven over NETCONF by **junos-mcp-server** (`EveNgTwin` implements Phase-1 read + gated Phase-2 writes) |
+| `inventory/identity.py` `IdentityMap` | operator inventory: bijective canonical ↔ NUAR / EVE / MCP-router / config-key mapping — every adapter normalises through it |
+| `twin/telemetry.py` `TelemetrySource` | gNMI streaming (live); NUAR historical counters (`NuarTelemetrySource`, resets/gaps handled) + `ReplayClock` |
+| `twin/config_store.py` `ConfigStore` | junos-mcp-server get-config + **real Junos commit timestamps** as the temporal-alignment signal; Batfish for static audit at scale |
+| `faults/` `Fault` | NETCONF load/commit on the lab; EVE-NG link impairments (Phase-2 shipped, `--allow-writes` gated) |
+| `rca/counterfactual.py` `Counterfactual` | sandbox replay (`sim`) / **Batfish** static what-if / **performance-model** what-if / EVE lab replay |
+| `perf/base.py` `PerformanceModel` | analytic queueing (default) / **RouteNet-Fermi** learned surrogate / EVE-NG measurement |
+| `engine/` `TelemetryReplayEngine` | builtin per-tick loop / **NautilusTrader** backtest+live engine (LGPL isolated in the `[nautilus]` extra) |
+| `tools/registry.py` `ToolRegistry` | **MCP** tool manifests exposed by junos-mcp-server, an EVE-NG server, a verification server |
+| `rca/agent.py` orchestrator loop | **LangGraph** plan/act/observe/iterate graph |
+| `rca/reasoner_llm.py` | Anthropic Messages API with genuine tool-use over the same registry |
+| `prediction/predictor.py` ladder | NUAR history via the same `TelemetrySource`; `GnnPredictor` = topology-aware joint forecaster seam |
+
+---
+
+## 8. Quantitative results (all seed-fixed, reproducible offline)
+
+| Pillar | Metric | Result |
+|---|---|---|
+| Detection | rate / latency / false positives | **7/7 · 1 tick · 0** |
+| Root cause | diagnosis / affected clients / vs human | **7/7 · 7/7 · ~×194** |
+| Perf model | delay / jitter / loss skill (vs analytic) | **+0.88 · +0.76 · +0.99** |
+| Perf model | cross-routing generalisation degradation | **+0.1 pt** |
+| Traffic-matrix gap | downstream KPI cost of gravity estimate | **0.6 % delay-MAPE** |
+| Predictive warning | lead time / timing error | **~140 ticks (~11.7 h) · +10** |
+| Benchmark | naive+exog: MASE / CRPS / DM p | **0.48 · 1.28 · 0.002 (significant)** |
+| Tests | full unit / integration / regression | **72 passing (1 skipped)** |
+
+---
+
+## 9. Package map
+
+```
+demo/
+├── __main__.py         CLI (run / eval / forecast* / perf / replay / status / record)
+├── clock.py            VirtualClock (sim) + ReplayClock (real history)
+├── config.py           backend selection + config.yaml loader (secrets via env)
+├── factory.py          builds selected backends, injects into the pipeline
+├── record.py           --record: capture fixtures from real endpoints
+├── inventory/          canonical ID space + bijective foreign-id mappers
+├── twin/               SimTwin · EveNgTwin · NuarTelemetrySource · traffic_model
+├── faults/             fault catalog, inject → recover → validate
+├── heartbeat/          detector + shared pure checks (injectable thresholds)
+├── tools/              tool registry (MCP shape) + 10 diagnostic tools
+├── rca/                orchestrator · rules/LLM reasoners · analysis · counterfactual ladder
+├── perf/               PerformanceModel: base · analytic · traffic_matrix · routenet/
+├── prediction/         CapacityPredictor ladder · features · breach · intent · kpi_forecast
+│   └── benchmark/      protocol · metrics · significance · calibration · plots · report
+├── engine/             telemetry replay/live lane: builtin + Nautilus
+├── eval/               labelled dataset · judges · runner · summary table
+└── viz.py              optional annotated topology PNG
+tests/                  regression + per-adapter fixtures + benchmark (72 tests)
+```
+
+---
+
+## 10. Reproduction commands (demo script)
+
+```bash
+# ── Reactive: detect → RCA → counterfactual → score (French narration)
+python -m demo run --scenario config_drift
+python -m demo run --scenario link_down_with_congestion --counterfactual perf   # perf-model oracle
+python -m demo eval                                                             # 7/7/7/7
+
+# ── Predictive: forecast → KPI → SLA intent → into the loop
+python -m demo run --scenario predicted_congestion       # utilisation forewarning
+python -m demo run --scenario predicted_sla_breach       # SLA forewarning (two-stage)
+
+# ── Performance model (RouteNet-Fermi)
+python -m demo perf predict --model gnn                  # KPIs of the current state
+python -m demo perf train && python -m demo perf eval    # train + skill/generalisation table
+
+# ── Rigorous benchmark (defensible model comparison)
+python -m demo forecast-bench --plots                    # rolling-origin + DM + report + 9 figures
+python -m demo forecast-bench-report --from results/<dir>  # regenerate from the frozen table
+
+# ── Full test suite
+python -m unittest discover tests
+```
+
+---
+
+## 11. Seams & honest limitations
+
+| Documented seam (marked, not on the default path) | Note |
+|---|---|
+| `GnnPredictor` (time-series) | topology-aware spatio-temporal forecaster, forecasting all links jointly |
+| `TrafficMatrixProvider` OT / tomography | per-OD demand inversion is under-determined; a principled estimator is future work |
+| RouteNet-Fermi label source | currently the M/M/1/K calculator standing in for EVE-NG measurements; real deploy swaps in telemetry |
+| Cross-topology generalisation | currently only **same-topology cross-routing**; cross-topology needs extra EVE-NG zones |
+| Preventive action | prediction emits an **intent** only; the twin-validated, gated preventive change is a commented seam |
+| Nautilus `LiveDataClient` | gNMI live wrapper left as deployment wiring; the feed, data type and actor are shipped and tested |
+
+> **Honesty statement.** The demo's analytic baseline is already strong (it is essentially the sim's own physics). RouteNet-Fermi's skill is a *non-circular, measurable* result against finite-buffer M/M/1/K labels. Its **architectural value** (SLA-prediction chain + millisecond counterfactual oracle + data-driven seam) holds in the demo; its **real-network value** (learning from measurements when queueing has no closed form, and cross-topology transfer — the paper's contribution) is marked as a clean seam and **not faked**.
+
+---
+
+*This document tracks the code. Every number comes from a fixed-seed offline run and can be re-verified with `python -m unittest discover tests`.*
