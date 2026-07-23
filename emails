@@ -1,22 +1,47 @@
-Dear Xiao,
+Objet : RE: Prevention de la sécurité
 
-Thank you very much for offering to support my application. It was a pleasure meeting you over dinner, and I truly appreciated the opportunity to learn from your experience at Cubist.
+Hi Jagannath,
 
-I am currently an Applied Mathematics student at École Polytechnique (X24), with research focused on generative modelling for financial time series and recent industry experience at Orange.
+Thanks for the thoughtful questions. Let me go through them, and I've tried to be
+precise about where data lives and how it is controlled at each step.
 
-Below are the details of the role:
+1) LAB vs PROD scope. Both agents operate in the LAB scope. The detection and
+root-cause agent works on the EVE-NG digital twin, which is a LAB copy generated
+from production configuration, not the production system itself; the agent reads the
+live twin read-only and only experiments in a sandboxed copy, never touching
+production. The prediction work uses historical NUAR data, but training and
+validation are done offline on the LAB side. So to answer directly: the input data
+for both agents is LAB scope.
 
-Position: Quantitative Research Intern (Cubist Systematic Investing)
-Preferred location: London
-Also open to: Hong Kong
-Job link: https://job-boards.greenhouse.io/point72/jobs/7297657002?gh_jid=7297657002
+2) Anonymisation. The digital twin is itself a structural abstraction: it reproduces
+the network's topology, routing and configuration logic and its load patterns, not
+the customer traffic it carries. The agents reason over operational metadata
+(link utilisation, IS-IS/BGP state, configuration diffs), which contains no user
+payload and no personal data. Customer reachability is represented by prefix
+identifiers, not customer identities. On top of that, I can pseudonymise the
+identifiers (device names, prefixes mapped to stable pseudonyms) before anything is
+placed in an LLM context, reusing the inventory-mapping layer we already have.
 
-I’ve attached my latest CV for your reference.
+3) Synthetic NUAR data. It is machine-generated, produced by the twin's traffic
+model and fault injector, deterministic and reproducible from a fixed seed. It is not
+derived from real production traces; it provides structurally realistic but
+content-synthetic data for training and testing. Where real NUAR data is later used
+for validation, it stays on the LAB side.
 
-If you have any suggestions that could strengthen my application, I would greatly appreciate your feedback. If you think another quantitative research opportunity at Cubist would be a better fit for my background, I’d also be happy to follow your recommendation.
+4) LLM APIs and data-export control. This is the most important point, so let me be
+explicit. The system runs OFFLINE BY DEFAULT and requires no external API: the core
+detection, the rule-based root-cause reasoning and the evaluation all run locally
+with zero external calls. The LLM is an OPTIONAL enhancement behind a clean
+interface. When an LLM is used, the intended deployment is an internally hosted or
+private in-VPC endpoint, not a public chat interface, so there is no contact with
+public forums and no use of the data for training. And even against such an endpoint,
+what is sent is pseudonymised operational metadata, not raw production configuration,
+with an outbound-filtering/audit step. If security policy requires full localisation,
+the default form of the system already satisfies it; the deployment mode of the
+optional LLM layer is yours to decide.
 
-Please let me know if there is any additional information or documentation that would be helpful.
-
-Thank you again for your time and consideration. I sincerely appreciate your support.
+Happy to walk through the data-flow diagram in more detail if useful, and to align
+the design with whatever the security guidelines require.
 
 Best regards,
+Lizhan
