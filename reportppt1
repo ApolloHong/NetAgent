@@ -1,0 +1,160 @@
+Rôle : tu es un assistant de création de présentations. Tu dois produire une présentation PowerPoint professionnelle, en français, à partir du rapport technique que je te fournis en pièce jointe (« Rapport technique final — Lizhan Hong »).
+
+Objectif : cette présentation accompagne un exposé oral d'environ douze minutes devant mon encadrant et l'équipe technique chez Orange. Le déroulé des diapositives doit suivre l'ordre ci-dessous, qui correspond à mon discours.
+
+RÈGLES GÉNÉRALES DE STYLE
+- Fond clair ou blanc pour toutes les diapositives. Pas de fond sombre.
+- Style sobre, professionnel, lisible à distance. Une seule idée par diapositive.
+- Peu de texte : au maximum trois à quatre puces par diapositive, chaque puce courte, pas de phrases longues. Les diapositives servent d'appui visuel, je développe à l'oral.
+- Titres courts et concrets. Pas de mots à la mode, pas de jargon marketing, pas de superlatifs.
+- Accord masculin quand c'est nécessaire. N'utilise jamais de tiret cadratin.
+- Police lisible et cohérente, format 16:9. Numérote les diapositives.
+- Une couleur d'accent unique et discrète, par exemple un bleu ou un orange sobre, utilisée seulement pour les titres et les éléments clés.
+
+RÈGLE SUR LES FIGURES (importante)
+- Réutilise directement les figures du rapport que je te fournis, en les insérant comme images (capture depuis le rapport). Ne redessine pas ces figures, ne les réinvente pas.
+- Repère chaque figure par sa légende dans le rapport. La correspondance est indiquée diapositive par diapositive ci-dessous.
+- Les deux schémas de flux du rapport (Figure 1, « Les deux voies et leur point de rencontre », et Figure 2, « La boucle de diagnostic ») doivent être insérés tels quels, en grand, bien lisibles.
+- Place chaque figure à côté de son texte, pas en vrac. Laisse de la marge autour, ne remplis pas toute la diapositive de texte.
+
+STRUCTURE DIAPOSITIVE PAR DIAPOSITIVE
+
+Diapo 1 — Titre
+- Titre : Détection, diagnostic et prévision sur jumeau numérique réseau
+- Sous-titre : Rapport d'étape
+- Nom : Lizhan Hong, École Polytechnique, Orange Wholesale (OW / OINIS)
+- Date : juillet 2026
+- Aucune figure.
+
+Diapo 2 — Le problème
+- Titre : Le coût d'un incident, c'est le temps de compréhension
+- Puces :
+  - Les changements de configuration sont une cause majeure de panne
+  - Dans le temps de rétablissement, détecter et diagnostiquer sont les phases les plus longues
+  - Un bon diagnostic demande de croiser configuration, télémétrie, topologie et routage
+- Aucune figure.
+
+Diapo 3 — Le système en une phrase
+- Titre : Une couche au-dessus du jumeau numérique
+- Puces :
+  - Détecter un problème quand il arrive
+  - En chercher la cause
+  - Prévenir un dépassement de charge avant qu'il n'arrive
+- Aucune figure.
+
+Diapo 4 — Les deux voies
+- Titre : Deux voies complémentaires
+- Puce unique courte : la voie quantitative dit quand et combien, la voie agent dit pourquoi, et un dépassement prévu devient un incident traité avant la panne
+- Figure : insère la Figure 1 du rapport (« Les deux voies et leur point de rencontre »), en grand, centrée.
+
+Diapo 5 — Le point clé
+- Titre : La différence, c'est la vérification
+- Puces :
+  - Une cause plausible n'est pas forcément juste
+  - Chaque hypothèse est rejouée dans une copie du jumeau
+  - Elle n'est retenue que si les symptômes reviennent
+- Figure : insère la Figure 2 du rapport (« La boucle de diagnostic »), en grand.
+
+Diapo 6 — Voie quantitative : données et absence de fuite
+- Titre : Prévoir la charge, sans regarder le futur
+- Puces :
+  - Sortie probabiliste : des quantiles, pas un seul chiffre
+  - Variables ajoutées : configuration, événements, calendrier
+  - À chaque date de prévision, seules les informations déjà connues sont utilisées
+- Aucune figure, ou une petite icône neutre.
+
+Diapo 7 — Voie quantitative : deux étapes
+- Titre : Deux étapes bien séparées
+- Puces :
+  - Étape 1 : prévoir la charge future, avec un intervalle
+  - Étape 2 : traduire cette charge en qualité de service, délai et perte
+  - Le modèle sur graphe traduit, il ne prévoit pas le temps
+- Aucune figure.
+
+Diapo 8 — Le protocole d'évaluation
+- Titre : Mesurer sérieusement, pas seulement montrer
+- Puces :
+  - Rejeu à origine glissante, plusieurs horizons
+  - Classement sur MASE et CRPS, pas sur le pourcentage d'erreur
+  - Un test statistique de Diebold-Mariano avant de dire meilleur
+- Aucune figure.
+
+Diapo 9 — Résultat principal
+- Titre : Les variables ajoutées apportent un gain significatif
+- Puces :
+  - Gain à tous les horizons, MASE et CRPS
+  - Différence confirmée par le test statistique
+- Figures : insère la Figure 3 du rapport (carte de skill) à gauche, et la Figure 4 (matrice de Diebold-Mariano) à droite.
+
+Diapo 10 — Dégradation et apport des variables
+- Titre : Fiable à l'horizon de travail
+- Puces :
+  - L'erreur monte avec l'horizon, mais le modèle enrichi reste devant
+  - Retirer les variables fait remonter fortement l'erreur
+- Figures : insère la Figure 5 du rapport (erreur en fonction de l'horizon) et la Figure 6 (effet du retrait des variables).
+
+Diapo 11 — Prévision de dépassement
+- Titre : Un mécanisme qui marche, sur peu d'exemples
+- Puces :
+  - Le modèle suit la montée de charge et alerte au voisinage du dépassement
+  - Bien meilleur classement des dépassements
+  - Attention : seulement trois événements, résultat à confirmer
+- Figures : insère la Figure 7 du rapport (cas de dépassement, éventail) et la Figure 8 (courbes de dépassement).
+
+Diapo 12 — Calibration
+- Titre : Correcte à l'horizon de travail, à surveiller plus loin
+- Puces :
+  - À l'horizon de travail, les intervalles sont de la bonne taille
+  - Plus loin, ils deviennent un peu trop étroits
+  - Seule la mesure d'ensemble est fiable, les découpes par horizon manquent de points
+- Figures : insère la Figure 9 du rapport (couverture et finesse) et la Figure 10 (histogrammes de calibration).
+
+Diapo 13 — Ce qui est solide, ce qui ne l'est pas
+- Titre : Être clair sur la solidité
+- Deux colonnes :
+  - Solide (sur beaucoup de points) : classement des modèles, apport des variables
+  - Pas encore solide (peu de points) : prévision de dépassement, calibration par horizon
+- Aucune figure.
+
+Diapo 14 — Voie agent : état actuel
+- Titre : Un raisonneur à base de règles comme référence
+- Puces :
+  - Pas encore piloté par un modèle de langage, pour une raison d'environnement
+  - Ce n'est pas une solution de secours, c'est un point de référence reproductible
+  - La chaîne reste agentique : elle suit une boucle et vérifie dans le jumeau
+- Figure facultative : rappeler la Figure 2, en plus petit.
+
+Diapo 15 — Voie agent : vers un modèle de langage
+- Titre : Une comparaison dans les mêmes conditions
+- Puces :
+  - Même interface, mêmes outils, même rapport de cause
+  - Le modèle de langage sera comparé : exactitude, appels d'outils, temps, preuves, taux de validation
+  - Objectif : une boucle de diagnostic vérifiable, pas seulement une réponse fluide
+- Aucune figure.
+
+Diapo 16 — Limites de périmètre
+- Titre : Limites assumées
+- Puces :
+  - Données encore issues du jumeau simulé, pas des données réelles
+  - Généralisation visée pour l'instant à l'intérieur d'une même topologie
+- Aucune figure.
+
+Diapo 17 — Prochaines étapes
+- Titre : Quatre chantiers
+- Puces :
+  - Ajouter des modèles plus complets, dont le modèle sur graphe
+  - Traiter la calibration par une méthode à garantie
+  - Brancher les données réelles de NUAR
+  - Estimer la matrice de trafic, avec l'équipe Innovation
+- Aucune figure.
+
+Diapo 18 — Conclusion
+- Titre : En résumé
+- Puces :
+  - Une façon rigoureuse et honnête de mesurer la prévision
+  - Le contexte opérationnel apporte un vrai gain
+  - Une voie de diagnostic vérifiable grâce au jumeau
+- Terminer par un simple « Merci », sans point final.
+
+CONTRAINTE FINALE
+- Respecte l'ordre et le nombre de diapositives. Ne rajoute pas de contenu que je n'ai pas demandé. Ne surcharge pas les diapositives. Garde un rendu épuré, fond clair, figures issues du rapport.
